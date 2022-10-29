@@ -1,0 +1,83 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html, body{
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 62.5%;
+    box-sizing: border-box;
+
+}
+
+.main-container{
+    height: 100vh;
+    width: 100%;
+    background: url(images/LoginBackground.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+/*
+.main-container .form-container{
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+*/
+.main-container .form-logo{
+    max-height: 100px;
+    width: 100px;
+    background-size: cover;
+    margin-bottom: 10vh;
+}
+
+.main-container form{
+    max-height: 25vh;
+
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-bottom: 100px;
+
+}
+
+.main-container input{
+    display: block;
+    margin-bottom: 25px;
+}
+
+.main-container input[type=text]::placeholder,input[type=password]::placeholder{
+    color: #ffffff;
+    font-size: 1.6rem;
+}
+
+.main-container input[type=text],input[type=password]{
+    padding: 13px 55px;
+    border-radius: 100px;
+    outline: none;
+
+    color: white;
+    background-color: rgba(189, 195, 199,0.5);
+    border: none;
+}
+
+.main-container input[type=button]{
+    padding: 13px 55px;
+    border-radius: 100px;
+    outline: none;
+    border: none;
+    background-color: rgba(255, 0, 0,0.75);
+    color: white;
+    font-size: 1.6rem;
+}
+
