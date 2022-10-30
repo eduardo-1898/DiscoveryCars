@@ -69,6 +69,13 @@ html, body{
 .header-container .nav-container .subnav-container-link ul li{
     margin-right: 5%;
 }
+
+.header-container .nav-container .nav-container-link ul li a{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+
 .header-container .nav-container .nav-container-link ul{
     display: flex;
     justify-content: space-around;
