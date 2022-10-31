@@ -81,3 +81,13 @@ html, body{
     font-size: 1.6rem;
 }
 
+.main-container input[type=button]:hover{
+    padding: 13px 55px;
+    border-radius: 100px;
+    outline: none;
+    border: none;
+    background-color: rgba(255, 0, 0,0.90);
+    color: white;
+    font-size: 1.6rem;
+}
+

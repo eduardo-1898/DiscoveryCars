@@ -88,9 +88,7 @@ html, body{
 .main-container{
     height: 84vh;
     width: 100%;
-
     display: flex;
-
 }
 
 
