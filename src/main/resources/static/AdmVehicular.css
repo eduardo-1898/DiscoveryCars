@@ -53,11 +53,9 @@ html, body{
 .header-container .nav-container .subnav-container-link{
     margin-left: 85%;
 }
-.header-container .nav-container .subnav-container-link ul li {
-    color: #181818;
-}
 .header-container .nav-container .subnav-container-link ul li a {
     text-decoration: none;
+    color: white;
 }
 
 .header-container .header-gray .breadcrumbs ul {
@@ -66,7 +64,6 @@ html, body{
     font-size: 1.5rem;
     padding-top: 9px;
     padding-left: 100px;
-    ;
     justify-content: flex-start;
     text-decoration: none;
 }
@@ -93,7 +90,7 @@ html, body{
 .main-container .formulario-mant {
     max-width: 50%;
     width: 100%;
-    height: 75%;
+    height: 90%;
     background: white;
     padding: 25px 30px;
     border-radius: 5px;
@@ -111,6 +108,15 @@ html, body{
 }
 .main-container form .column {
     float: left;
+    width: 50%;
+    padding: 2px;
+}
+.main-container form .columntree {
+    position: relative;
+    float: left;
+    left: 100%;
+    bottom: 216px;
+    ;
     width: 50%;
     padding: 2px;
 }
@@ -144,16 +150,26 @@ html, body{
     text-align: left;
 
 }
+.main-container form .btn-primary{
+    position: absolute;
+    right: 80px;
+    bottom: 40px;
+    float: left;
+    margin-top:20%;
+    margin-right: 30%;
+    background-color: gray;
+    font-size: 20px;
+    width: 100px;
+    border-radius: 2px;
+}
 
 .main-container .image-main{
-    display: flex;
-    position: static;
-    width: 30%;
+    padding-left: 290px;
+    box-sizing: border-box;
 }
 .main-container .image-main img{
     height: 100%;
     width: 100%;
-    background-size: cover;
 }
 /*footer-style*/
 .footer-container{
