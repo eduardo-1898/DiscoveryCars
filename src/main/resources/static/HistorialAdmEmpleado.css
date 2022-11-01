@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: inherit;
 }
+
 html, body{
     height: 100%;
     box-sizing: border-box;
@@ -10,26 +11,34 @@ html, body{
     -webkit-font-smoothing: antialiased;
     font-family: 'Roboto', sans-serif;
 }
+
 /*Navigation style*/
+
 .header-container{
     width: 100%;
     height: 16vh;
     position: relative;
 }
+
 .header-container .header-logo{
     position: absolute;
     max-height: 16vh;
     max-width: 16vw;
 }
+
+
 .container {
     height: 100vh;
     margin-left: 0;
     margin-right: 0;
 }
+
 .header-container .header-gray{
     background-color: #d9d9d9;
     height: 50%;
 }
+
+
 .nav-container{
     background-color: #181818;
     color: #ffffff;
@@ -41,144 +50,201 @@ html, body{
     padding-left: 13vw;
     text-decoration: none;
 }
+
+
 .header-container .nav-container ul li{
     list-style: none;
     display: inline;
 }
+
+
 .header-container .nav-container ul li a:hover {
     color: white;
     box-shadow: inset 200px 0 0 0 #3C6E71;
 }
 
-.header-container .nav-container .subnav-container-link{
-    margin-left: 85%;
+.header-container .nav-container .nav-container-link{
+    width: 70%;
 }
+
+
+.header-container .nav-container .nav-container-link ul{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 0rem;
+}
+
+
+.header-container .nav-container .nav-container-link ul li a{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.active a{
+    font-weight: bold;
+}
+
+.header-container .nav-container .subnav-container-link{
+    display: flex;
+    position:absolute;
+    right: 20px;
+   
+}
+
 .header-container .nav-container .subnav-container-link ul li {
     color: #181818;
 }
+
 .header-container .nav-container .subnav-container-link ul li a {
     text-decoration: none;
+}
+
+.header-container .header-gray .breadcrumbs {
+    width: 70%;
 }
 
 .header-container .header-gray .breadcrumbs ul {
     display: flex;
     width: 100%;
-    font-size: 1.5rem;
-    padding-top: 9px;
-    padding-left: 100px;
-    ;
-    justify-content: flex-start;
+    display: flex;
+    font-size: 2.5rem;
+    margin-left: 10%;
+    align-items: center;
+    padding-left: 5vw;
     text-decoration: none;
+    line-height: 70px;
 }
+
 .header-container .header-gray .breadcrumbs ul li {
     list-style: none;
     display: inline;
     margin: 2px;
+
 }
+
 .header-container .header-gray .breadcrumbs ul li a:hover {
     color: white;
     box-shadow: inset 200px 0 0 0 #3C6E71;
 }
+
 .header-container .header-gray .breadcrumbs a {
     text-decoration: none;
     color: #181818;
+
 }
+
 /*Main style*/
+
 .main-container{
     height: 84vh;
     width: 100%;
     display: flex;
-    align-content: center;
+    align-content: space-evenly;
 }
-.main-container .formulario-mant {
-    max-width: 50%;
-    width: 100%;
-    height: 75%;
-    background: white;
-    padding: 25px 30px;
-    border-radius: 5px;
-    align-items: center;
-}
-.main-container .formulario-mant .titulo-formulario-mant {
+
+.main-container .columna-tabla .tabla-mant .titulo-tabla-mant {
     margin-bottom: 20px;
     position: relative;
     font-size: 25px;
     font-weight: 600;
 }
-.main-container form {
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-.main-container form .column {
+
+.main-container .columna-tabla .tabla-mant .col-boton-nuevo {
     float: left;
-    width: 50%;
-    padding: 2px;
 }
-.main-container form .input-box {
-    margin: 20px 0 12px 0;
-    width: calc (100% / 2 - 20px);
+
+.main-container .columna-tabla .tabla-mant .col-boton-nuevo .nuevo-registro button {
+    --bs-btn-padding-x: 0.75rem;
+    --bs-btn-padding-y: 0.375rem;
+    --bs-btn-font-size: 1.5rem;
+    --bs-btn-font-weight: 400;
+    --bs-btn-line-height: 1.5;
 }
-.main-container form .input-box input {
-    height: 45px;
+
+.main-container .columna-tabla .tabla-mant .col-form-search {
+    float: right;
+    margin-bottom: 10px
+}
+
+.main-container .columna-tabla .tabla-mant .col-form-search form input{
+    font-size: 1.5rem;
+}
+
+.main-container .columna-tabla .tabla-mant .col-form-search form button{
+    font-size: 1.5rem;
+    color: #ffffff;
+    background-color: #2C7F97;
+}
+
+
+.main-container .columna-tabla .tabla-mant {
+    float: left;
     width: 100%;
-    outline: none;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    padding-left: 10px;
-    font-size: 16px;
+    padding: 5px;
 }
-.main-container form .input-box .detail{
-    display: block;
-    font-weight: 500;
-    margin-bottom: 5px;
-    font-size: 2rem;
-}
-.main-container form .input-box .form-select {
-    height: 45px;
+
+.main-container .columna-imagen{
+    float: right;
     width: 100%;
-    outline: none;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    padding-left: 10px;
-    font-size: 16px;
+    padding: 5px;
+}
+
+.main-container .columna-tabla .tabla-mant table thead {
+    font-size: 17px;
+    background-color: #2C7F97;
+    color:#ffffff;
+    
+}
+
+.main-container .columna-tabla .tabla-mant table thead th {
+    padding: 2rem 2rem;
     text-align: left;
-
+    width: 400px;
+    height: 60px;
+    font-size: 1.7rem;
+    
 }
 
-.main-container .image-main{
-    display: flex;
-    position: static;
+.main-container .columna-tabla .tabla-mant table tbody tr {
+    padding: 1.5rem 1.5rem;
+    font-size: 15px;
+    text-align: justify;
+}
+
+.main-container .columna-tabla .tabla-mant table tbody tr th{
+    
+    padding-left: 25px;
+}
+
+.main-container .columna-imagen .image-main{
+    position: relative;
     width: 30%;
 }
-.main-container .image-main img{
+
+.main-container .columna-imagen .image-main img{
     height: 100%;
-    width: 100%;
+    width: 279%;
     background-size: cover;
+    margin-left: 15%;
 }
-.main-container form .btn-primary{
-    position: absolute;
-    right: 80px;
-    bottom: 40px;
-    float: left;
-    margin-top:20%;
-    margin-right: 30%;
-    background-color: gray;
-    font-size: 20px;
-    width: 100px;
-    border-radius: 2px;
-}
+
+
 /*footer-style*/
 .footer-container{
     height: 40vh;
     width: 100%;
     background-color: #d9d9d9;
     padding-top: 5px;
+
 }
+
 .footer-container .footer-line{
     height: 5px;
     width: 100%;
     background: #181818;
 }
+
 .footer-container .footer-link-container{
     height: 100%;
     width: 100%;
@@ -187,16 +253,19 @@ html, body{
     color: #181818;
     align-items: center;
 }
+
 .footer-container .footer-link-container ul li{
     list-style: none;
     font-size: 1.8rem;
     margin-bottom: 10px;
     cursor: pointer;
 }
+
 .footer-container .footer-link-container ul li a:link,a:visited, a:active{
     text-decoration: none;
     color: #ffffff;
 }
+
 #style-1 {
     padding: 0 0.25rem;
     margin: 0 -0.25rem;
