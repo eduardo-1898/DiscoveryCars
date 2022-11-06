@@ -2,7 +2,7 @@
 
 <html >
     <head>
-        <title>Empleados</title>
+        <title>Vehiculos</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,13 +11,13 @@
         <link href="HistorialAdmEmpleado.css" rel="stylesheet" type="text/css"/>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+
     </head>
 
 
     <header class="header-container">
-
         <a href="#"><img class="header-logo" src="images/logo.JPG" alt="logo"/></a>
-
         <nav class="nav-container">
             <div class="subnav-container-link">
                 <ul>
@@ -25,14 +25,14 @@
                 </ul>
             </div>
         </nav>
-
         <div class="header-gray">
             <!-- espacio gris -->
             <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                 <div class="breadcrumbs">
                     <ul class="breadcrumb"">
-                        <li class="breadcrumb-item"><a href="LandingPage.html">Administrador</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Historial Vehiculos</li>
+                        <li><a href="LandingPage.html">Administrador</a></li>
+                        <li>></li>
+                        <li>Historial Vehiculos</li>
                     </ul>
                 </div>
             </nav>
@@ -44,12 +44,12 @@
             <div class="main-container">
                 <div class="columna-tabla">
                     <div class="tabla-mant">    
-                        <div class="titulo-tabla-mant">Registro de empleados</div>
+                        <div class="titulo-tabla-mant">Registro de vehiculos</div>
 
                         <div class="col-boton-nuevo">    
                             <div class="nuevo-registro">
                                 <button type="button" class="btn btn-dark"
-                                        onclick="window.location.href='AdmCreacionEmpleado.html';">
+                                        onclick="window.location.href='AdmVehicular.html';">
                                     Nuevo Registro</button>
                             </div>
                         </div>
@@ -65,12 +65,12 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">Cedula</th>
-                                    <th scope="col">Nombre</th>
-                                    <th scope="col">Apellido</th>
-                                    <th scope="col">Usuario</th>
-                                    <th scope="col">Contraseña</th>
-                                    <th scope="col">Rol</th> 
+                                    <th scope="col">Num. Placa</th>
+                                    <th scope="col">Marca</th>
+                                    <th scope="col">Modelo</th>
+                                    <th scope="col">Año</th>
+                                    <th scope="col">Color</th> 
+                                    <th scope="col">Precio</th> 
                                     <th scope="col">Estado</th> 
                                     <th scope="col">Modificar</th>
                                     <th scope="col">Eliminar</th> 
@@ -91,7 +91,7 @@
 
                 <div class="columna-imagen">
                     <div class="image-main">
-                        <img src="images/carEmp.jpg" alt="jpg"/>
+                        <img src="images/carAdmVehicular.jpg" alt="jpg"/>
                     </div>  
                 </div>
             </div>
@@ -122,7 +122,6 @@
                     <li><a id="style-1" href="url">Twitter</a></li>
                     <li><a id="style-1" href="url">Instagram</a></li>
                 </ul>
-
             </div>
         </footer>
     </body>
