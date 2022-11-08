@@ -4,10 +4,17 @@
  */
 package ProyectoConcesionario.ProyectoConcesionario.Controllers;
 
-/**
- *
- * @author Eduardo JA
- */
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
 public class ClientesController {
     
+    
+    @GetMapping("/Home/General")
+    public String index(){
+        
+        //Cambiar el path a la la vista que se necesite
+        return "Clientes/CreateCustomers";
+    }
 }
