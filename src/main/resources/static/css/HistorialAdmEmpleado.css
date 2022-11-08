@@ -107,13 +107,11 @@ html, body{
 .header-container .header-gray .breadcrumbs ul {
     display: flex;
     width: 100%;
-    display: flex;
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     margin-left: 10%;
     align-items: center;
     padding-left: 5vw;
     text-decoration: none;
-    line-height: 70px;
 }
 
 .header-container .header-gray .breadcrumbs ul li {
@@ -219,14 +217,14 @@ html, body{
 
 .main-container .columna-imagen .image-main{
     position: relative;
-    width: 30%;
+    width: 100%;
+    height: 100%;
 }
 
 .main-container .columna-imagen .image-main img{
     height: 100%;
-    width: 279%;
+    width: 100%;
     background-size: cover;
-    margin-left: 15%;
 }
 
 

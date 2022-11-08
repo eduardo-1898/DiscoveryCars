@@ -147,7 +147,10 @@ html, body{
 
 .main-container .image-main{
     display: flex;
-    position: static;
+    align-items: flex-end;
+    position: relative;
+    left: 250px;
+    float: right;
     width: 30%;
 }
 .main-container .image-main img{
