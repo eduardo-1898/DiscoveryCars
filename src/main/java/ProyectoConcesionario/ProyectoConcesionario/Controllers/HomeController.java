@@ -4,10 +4,9 @@
  */
 package ProyectoConcesionario.ProyectoConcesionario.Controllers;
 
-/**
- *
- * @author Eduardo JA
- */
+import org.springframework.stereotype.Controller;
+
+@Controller
 public class HomeController {
     
 }

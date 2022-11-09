@@ -11,10 +11,27 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ClientesController {
     
     
-    @GetMapping("/Home/General")
-    public String index(){
-        
+    @GetMapping("/Clientes/Nuevo")
+    public String CrearClientes(){
         //Cambiar el path a la la vista que se necesite
         return "Clientes/CreateCustomers";
+    }
+    
+    @GetMapping("/Clientes/Landing")
+    public String Landing(){
+        //Cambiar el path a la la vista que se necesite
+        return "LandingPage";
+    }
+    
+    @GetMapping("/Clientes/Actualizar")
+    public String ActualizarClientes(){
+        //Cambiar el path a la la vista que se necesite
+        return "Clientes/UpdateCustomers";
+    }
+    
+    @GetMapping("/Clientes/Index")
+    public String IndexClientes(){
+        //Cambiar el path a la la vista que se necesite
+        return "Clientes/IndexCustomers";
     }
 }
