@@ -5,6 +5,7 @@
 package ProyectoConcesionario.ProyectoConcesionario.entity;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,15 +18,18 @@ public class Modelo implements Serializable{
         
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long IdModelo;
+    @Column(name="Id")
+    private long Id;
+    
+    @Column(name="Modelo")
     private String Modelo; 
     
-    public long getIdModelo() {
-        return IdModelo;
+    public long getId() {
+        return Id;
     }
 
-    public void setIdModelo(long IdModelo) {
-        this.IdModelo = IdModelo;
+    public void setId(long Id) {
+        this.Id = Id;
     }
 
     public String getModelo() {

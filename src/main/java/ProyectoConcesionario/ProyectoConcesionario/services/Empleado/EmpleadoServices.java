@@ -8,11 +8,13 @@ import ProyectoConcesionario.ProyectoConcesionario.entity.Empleado;
 import ProyectoConcesionario.ProyectoConcesionario.repository.EmpleadoRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author Eduardo JA
  */
+@Service
 public class EmpleadoServices implements IEmpleadoServices{
 
     @Autowired

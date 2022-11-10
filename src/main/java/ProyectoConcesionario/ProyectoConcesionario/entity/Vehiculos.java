@@ -5,10 +5,13 @@
 package ProyectoConcesionario.ProyectoConcesionario.entity;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,12 +20,28 @@ public class Vehiculos implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="placa")
     private String placa;
-    private Long idMarca, idModelo;
-    private int Ano;
+    
+    @Column(name="Ano")
+    private Long Ano;
+        
+    @Column(name="Color")
     private String Color;
-    private int PrecioCompra;
+            
+    @Column(name="PrecioCompra")
+    private Long Precio_Compra;
+                
+    @Column(name="Estado")
     private boolean Estado;
+    
+    @ManyToOne
+    @JoinColumn(name = "id_Marca")
+    private Marca Marcas;
+    
+    @ManyToOne
+    @JoinColumn(name = "id_Modelo")
+    private Modelo Modelos;
 
     public String getPlaca() {
         return placa;
@@ -32,27 +51,11 @@ public class Vehiculos implements Serializable {
         this.placa = placa;
     }
 
-    public Long getIdMarca() {
-        return idMarca;
-    }
-
-    public void setIdMarca(Long idMarca) {
-        this.idMarca = idMarca;
-    }
-
-    public Long getIdModelo() {
-        return idModelo;
-    }
-
-    public void setIdModelo(Long idModelo) {
-        this.idModelo = idModelo;
-    }
-
-    public int getAno() {
+    public Long getAno() {
         return Ano;
     }
 
-    public void setAno(int Ano) {
+    public void setAno(Long Ano) {
         this.Ano = Ano;
     }
 
@@ -64,12 +67,12 @@ public class Vehiculos implements Serializable {
         this.Color = Color;
     }
 
-    public double getPrecioCompra() {
-        return PrecioCompra;
+    public Long getPrecio_Compra() {
+        return Precio_Compra;
     }
 
-    public void setPrecioCompra(int PrecioCompra) {
-        this.PrecioCompra = PrecioCompra;
+    public void setPrecio_Compra(Long Precio_Compra) {
+        this.Precio_Compra = Precio_Compra;
     }
 
     public boolean isEstado() {
@@ -79,7 +82,22 @@ public class Vehiculos implements Serializable {
     public void setEstado(boolean Estado) {
         this.Estado = Estado;
     }
+
+    public Marca getMarcas() {
+        return Marcas;
+    }
+
+    public void setMarcas(Marca Marcas) {
+        this.Marcas = Marcas;
+    }
+
+    public Modelo getModelos() {
+        return Modelos;
+    }
+
+    public void setModelos(Modelo Modelos) {
+        this.Modelos = Modelos;
+    }
     
-    
-    
+
 }

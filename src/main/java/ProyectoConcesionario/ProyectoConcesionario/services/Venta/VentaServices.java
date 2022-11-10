@@ -8,11 +8,9 @@ import ProyectoConcesionario.ProyectoConcesionario.entity.Venta;
 import ProyectoConcesionario.ProyectoConcesionario.repository.VentaRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-/**
- *
- * @author Eduardo JA
- */
+@Service
 public class VentaServices implements IVentaServices {
 
     @Autowired

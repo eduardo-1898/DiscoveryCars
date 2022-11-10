@@ -8,11 +8,9 @@ import ProyectoConcesionario.ProyectoConcesionario.entity.Vehiculos;
 import ProyectoConcesionario.ProyectoConcesionario.repository.VehiculosRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-/**
- *
- * @author Eduardo JA
- */
+@Service
 public class VehiculosServices implements IVehiculosServices{
 
     @Autowired

@@ -8,8 +8,10 @@ import ProyectoConcesionario.ProyectoConcesionario.entity.Departamento;
 import ProyectoConcesionario.ProyectoConcesionario.repository.DepartamentoRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 
+@Service
 public class DepartamentoServices implements IDepartamentoServices {
 
     @Autowired

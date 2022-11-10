@@ -5,6 +5,7 @@
 package ProyectoConcesionario.ProyectoConcesionario.entity;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,15 +19,18 @@ public class Departamento implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long IdDepartamento;
+    @Column(name="Id")
+    private Long Id;
+    
+    @Column(name="Nombre_Departamento")
     private String NombreDepartamento;
 
-    public Long getIdDepartamento() {
-        return IdDepartamento;
+    public Long getId() {
+        return Id;
     }
 
-    public void setIdDepartamento(Long IdDepartamento) {
-        this.IdDepartamento = IdDepartamento;
+    public void setId(Long Id) {
+        this.Id = Id;
     }
 
     public String getNombreDepartamento() {
@@ -36,6 +40,7 @@ public class Departamento implements Serializable {
     public void setNombreDepartamento(String NombreDepartamento) {
         this.NombreDepartamento = NombreDepartamento;
     }
+
     
     
 }

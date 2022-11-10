@@ -6,10 +6,13 @@ package ProyectoConcesionario.ProyectoConcesionario.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -22,22 +25,34 @@ public class Mantenimiento implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long IdMantenimiento;
+    @Column(name="Id")
+    private Long Id;
+    
+    @Column(name="Placa")
     private String Placa;
-    private Long IdDepartamento;
-    private Long IdEmpleado;
-    private String DescripcionMantenimiento;
+    
+    @Column(name="DescripcionMantenimiento")
+    private String Descripcion_Mantenimiento;
     
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date FechaIngreso;
+    @Column(name="FechaIngreso")
+    private Date Fecha_Ingreso;
+    
+    @ManyToOne
+    @JoinColumn(name = "Id_Departamento")
+    private Departamento Departamentos;
+    
+    @ManyToOne
+    @JoinColumn(name = "Id_Empleado")
+    private Empleado Empleados;
 
-    public Long getIdMantenimiento() {
-        return IdMantenimiento;
+    public Long getId() {
+        return Id;
     }
 
-    public void setIdMantenimiento(Long IdMantenimiento) {
-        this.IdMantenimiento = IdMantenimiento;
+    public void setId(Long Id) {
+        this.Id = Id;
     }
 
     public String getPlaca() {
@@ -48,38 +63,38 @@ public class Mantenimiento implements Serializable{
         this.Placa = Placa;
     }
 
-    public Long getIdDepartamento() {
-        return IdDepartamento;
+    public String getDescripcion_Mantenimiento() {
+        return Descripcion_Mantenimiento;
     }
 
-    public void setIdDepartamento(Long IdDepartamento) {
-        this.IdDepartamento = IdDepartamento;
+    public void setDescripcion_Mantenimiento(String Descripcion_Mantenimiento) {
+        this.Descripcion_Mantenimiento = Descripcion_Mantenimiento;
     }
 
-    public Long getIdEmpleado() {
-        return IdEmpleado;
+    public Date getFecha_Ingreso() {
+        return Fecha_Ingreso;
     }
 
-    public void setIdEmpleado(Long IdEmpleado) {
-        this.IdEmpleado = IdEmpleado;
+    public void setFecha_Ingreso(Date Fecha_Ingreso) {
+        this.Fecha_Ingreso = Fecha_Ingreso;
     }
 
-    public String getDescripcionMantenimiento() {
-        return DescripcionMantenimiento;
+    public Departamento getDepartamentos() {
+        return Departamentos;
     }
 
-    public void setDescripcionMantenimiento(String DescripcionMantenimiento) {
-        this.DescripcionMantenimiento = DescripcionMantenimiento;
+    public void setDepartamentos(Departamento Departamentos) {
+        this.Departamentos = Departamentos;
     }
 
-    public Date getFechaIngreso() {
-        return FechaIngreso;
+    public Empleado getEmpleados() {
+        return Empleados;
     }
 
-    public void setFechaIngreso(Date FechaIngreso) {
-        this.FechaIngreso = FechaIngreso;
+    public void setEmpleados(Empleado Empleados) {
+        this.Empleados = Empleados;
     }
-    
+
     
     
 }

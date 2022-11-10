@@ -5,6 +5,7 @@
 package ProyectoConcesionario.ProyectoConcesionario.entity;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,19 +18,36 @@ public class Cliente implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long IdCliente;
+    @Column(name="Id")
+    private Long Id;
     
+    @Column(name="Cedula")
     private String Cedula;
-    private String NombreCliente, Apellido1, Apellido2;
-    private String Correo, Direccion;
-    private int telefono;
+    
+    @Column(name="Nombre_Cliente")
+    private String NombreCliente;
+    
+    @Column(name="Apellido1")
+    private String Apellido1;
+    
+    @Column(name="Apellido2")
+    private String Apellido2;
+    
+    @Column(name="Correo")
+    private String Correo;
+    
+    @Column(name="Direccion")
+    private String Direccion;
+    
+    @Column(name="telefono")
+    private Long telefono;
 
-    public Long getIdCliente() {
-        return IdCliente;
+    public Long getId() {
+        return Id;
     }
 
-    public void setIdCliente(Long IdCliente) {
-        this.IdCliente = IdCliente;
+    public void setId(Long Id) {
+        this.Id = Id;
     }
 
     public String getCedula() {
@@ -80,13 +98,14 @@ public class Cliente implements Serializable{
         this.Direccion = Direccion;
     }
 
-    public int getTelefono() {
+    public Long getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(Long telefono) {
         this.telefono = telefono;
     }
+
     
     
 }

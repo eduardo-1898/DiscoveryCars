@@ -5,10 +5,13 @@
 package ProyectoConcesionario.ProyectoConcesionario.entity;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,26 +20,25 @@ public class Venta implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long IdVenta; 
+    @Column(name="Id")
+    private Long Id; 
     
-    private Long IdFactura;
+    @Column(name="Placa")
     private String Placa;
-    private int PrecioVenta;
+        
+    @Column(name="PrecioVenta")
+    private int Precio_Venta;
+    
+    @ManyToOne
+    @JoinColumn(name = "Id_Factura")
+    private Encabezado Encabezados;
 
-    public Long getIdVenta() {
-        return IdVenta;
+    public Long getId() {
+        return Id;
     }
 
-    public void setIdVenta(Long IdVenta) {
-        this.IdVenta = IdVenta;
-    }
-
-    public Long getIdFactura() {
-        return IdFactura;
-    }
-
-    public void setIdFactura(Long IdFactura) {
-        this.IdFactura = IdFactura;
+    public void setId(Long Id) {
+        this.Id = Id;
     }
 
     public String getPlaca() {
@@ -47,14 +49,22 @@ public class Venta implements Serializable {
         this.Placa = Placa;
     }
 
-    public int getPrecioVenta() {
-        return PrecioVenta;
+    public int getPrecio_Venta() {
+        return Precio_Venta;
     }
 
-    public void setPrecioVenta(int PrecioVenta) {
-        this.PrecioVenta = PrecioVenta;
+    public void setPrecio_Venta(int Precio_Venta) {
+        this.Precio_Venta = Precio_Venta;
     }
-    
+
+    public Encabezado getEncabezados() {
+        return Encabezados;
+    }
+
+    public void setEncabezados(Encabezado Encabezados) {
+        this.Encabezados = Encabezados;
+    }
+
     
     
 }

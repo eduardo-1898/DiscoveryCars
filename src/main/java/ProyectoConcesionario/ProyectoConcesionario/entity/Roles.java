@@ -6,6 +6,7 @@ package ProyectoConcesionario.ProyectoConcesionario.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,32 +18,35 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
-@Table(name="Roles")
+@Table(name="roles")
 public class Roles implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idRole;
-    private String NombreRole;
+    private Long id;
+    
+    @Column(name="NombreRole")
+    private String Nombre_Role;
     
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name="Fecha_Creacion")
     private Date FechaCreacion; 
 
-    public Long getIdRole() {
-        return idRole;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdRole(Long idRole) {
-        this.idRole = idRole;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getNombreRole() {
-        return NombreRole;
+    public String getNombre_Role() {
+        return Nombre_Role;
     }
 
-    public void setNombreRole(String NombreRole) {
-        this.NombreRole = NombreRole;
+    public void setNombre_Role(String Nombre_Role) {
+        this.Nombre_Role = Nombre_Role;
     }
 
     public Date getFechaCreacion() {
@@ -52,7 +56,6 @@ public class Roles implements Serializable{
     public void setFechaCreacion(Date FechaCreacion) {
         this.FechaCreacion = FechaCreacion;
     }
-    
-    
+
     
 }

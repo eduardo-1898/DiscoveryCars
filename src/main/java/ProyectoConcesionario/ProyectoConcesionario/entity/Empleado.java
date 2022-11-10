@@ -5,10 +5,13 @@
 package ProyectoConcesionario.ProyectoConcesionario.entity;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -18,21 +21,37 @@ public class Empleado implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long IdEmpleado;
-    private String Cedula;
-    private String NombreEmpleado;
-    private String Apellido1;    
-    private String NombreUsuario;
-    private String Password;
-    private boolean Estado;
-    private int idRole;
+    @Column(name="Id")
+    private Long Id;
 
-    public Long getIdEmpleado() {
-        return IdEmpleado;
+    @Column(name="Cedula")
+    private String Cedula;
+    
+    @Column(name="NombreEmpleado")
+    private String Nombre_Empleado;
+    
+    @Column(name="Apellido1")    
+    private String Apellido1;    
+    
+    @Column(name="NombreUsuario")
+    private String Nombre_Usuario;
+    
+    @Column(name="Password")
+    private String Password;
+    
+    @Column(name="Estado")
+    private boolean Estado;
+    
+    @ManyToOne
+    @JoinColumn(name = "id_Role")
+    private Roles Roles;
+
+    public Long getId() {
+        return Id;
     }
 
-    public void setIdEmpleado(Long IdEmpleado) {
-        this.IdEmpleado = IdEmpleado;
+    public void setId(Long Id) {
+        this.Id = Id;
     }
 
     public String getCedula() {
@@ -43,12 +62,12 @@ public class Empleado implements Serializable {
         this.Cedula = Cedula;
     }
 
-    public String getNombreEmpleado() {
-        return NombreEmpleado;
+    public String getNombre_Empleado() {
+        return Nombre_Empleado;
     }
 
-    public void setNombreEmpleado(String NombreEmpleado) {
-        this.NombreEmpleado = NombreEmpleado;
+    public void setNombre_Empleado(String Nombre_Empleado) {
+        this.Nombre_Empleado = Nombre_Empleado;
     }
 
     public String getApellido1() {
@@ -59,12 +78,12 @@ public class Empleado implements Serializable {
         this.Apellido1 = Apellido1;
     }
 
-    public String getNombreUsuario() {
-        return NombreUsuario;
+    public String getNombre_Usuario() {
+        return Nombre_Usuario;
     }
 
-    public void setNombreUsuario(String NombreUsuario) {
-        this.NombreUsuario = NombreUsuario;
+    public void setNombre_Usuario(String Nombre_Usuario) {
+        this.Nombre_Usuario = Nombre_Usuario;
     }
 
     public String getPassword() {
@@ -83,13 +102,14 @@ public class Empleado implements Serializable {
         this.Estado = Estado;
     }
 
-    public int getIdRole() {
-        return idRole;
+    public Roles getRoles() {
+        return Roles;
     }
 
-    public void setIdRole(int idRole) {
-        this.idRole = idRole;
+    public void setRoles(Roles Roles) {
+        this.Roles = Roles;
     }
     
     
+     
 }

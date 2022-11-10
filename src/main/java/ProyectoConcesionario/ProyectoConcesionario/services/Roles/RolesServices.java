@@ -8,11 +8,10 @@ import ProyectoConcesionario.ProyectoConcesionario.entity.Roles;
 import ProyectoConcesionario.ProyectoConcesionario.repository.RolesRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-/**
- *
- * @author Eduardo JA
- */
+
+@Service
 public class RolesServices implements IRolesServices{
 
     @Autowired

@@ -6,10 +6,13 @@ package ProyectoConcesionario.ProyectoConcesionario.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -22,44 +25,54 @@ public class Encabezado implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long IdFactura;
-    private Long IdEmpleado; 
-    private Long IdCliente;
+    @Column(name="Id")
+    private Long Id;
     
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date FechaVenta;
+    @Column(name="FechaVenta")
+    private Date Fecha_Venta;
 
-    public Long getIdFactura() {
-        return IdFactura;
+    @ManyToOne
+    @JoinColumn(name = "Id_Empleado")
+    private Empleado Empleados;
+    
+    @ManyToOne
+    @JoinColumn(name = "Id_Cliente")
+    private Cliente Clientes;
+
+    public Long getId() {
+        return Id;
     }
 
-    public void setIdFactura(Long IdFactura) {
-        this.IdFactura = IdFactura;
+    public void setId(Long Id) {
+        this.Id = Id;
     }
 
-    public Long getIdEmpleado() {
-        return IdEmpleado;
+    public Date getFecha_Venta() {
+        return Fecha_Venta;
     }
 
-    public void setIdEmpleado(Long IdEmpleado) {
-        this.IdEmpleado = IdEmpleado;
+    public void setFecha_Venta(Date Fecha_Venta) {
+        this.Fecha_Venta = Fecha_Venta;
     }
 
-    public Long getIdCliente() {
-        return IdCliente;
+    public Empleado getEmpleados() {
+        return Empleados;
     }
 
-    public void setIdCliente(Long IdCliente) {
-        this.IdCliente = IdCliente;
+    public void setEmpleados(Empleado Empleados) {
+        this.Empleados = Empleados;
     }
 
-    public Date getFechaVenta() {
-        return FechaVenta;
+    public Cliente getClientes() {
+        return Clientes;
     }
 
-    public void setFechaVenta(Date FechaVenta) {
-        this.FechaVenta = FechaVenta;
+    public void setClientes(Cliente Clientes) {
+        this.Clientes = Clientes;
     }
+
+    
     
 }

@@ -7,7 +7,6 @@ import ProyectoConcesionario.ProyectoConcesionario.entity.Roles;
 import java.util.List;
 
 
-
 public interface IRolesServices {
     public List<Roles> getRoles();
     public Roles getRolesById(long id);

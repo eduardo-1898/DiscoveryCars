@@ -5,6 +5,7 @@
 package ProyectoConcesionario.ProyectoConcesionario.entity;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,15 +18,18 @@ public class Marca implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idMarca;
+    @Column(name="id")
+    private Long id;
+    
+    @Column(name="Marca")
     private String Marca;
 
-    public Long getIdMarca() {
-        return idMarca;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdMarca(Long idMarca) {
-        this.idMarca = idMarca;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getMarca() {
@@ -35,8 +39,7 @@ public class Marca implements Serializable{
     public void setMarca(String Marca) {
         this.Marca = Marca;
     }
-    
-    
+
     
     
 }

@@ -8,8 +8,10 @@ import ProyectoConcesionario.ProyectoConcesionario.entity.Marca;
 import ProyectoConcesionario.ProyectoConcesionario.repository.MarcaRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 
+@Service
 public class MarcaServices implements IMarcaServices{
 
     @Autowired

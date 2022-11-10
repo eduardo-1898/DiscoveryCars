@@ -4,23 +4,32 @@
  */
 package ProyectoConcesionario.ProyectoConcesionario.Controllers;
 
+import ProyectoConcesionario.ProyectoConcesionario.entity.Cliente;
+import ProyectoConcesionario.ProyectoConcesionario.services.Cliente.IClienteServices;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class ClientesController {
     
+    @Autowired
+    private IClienteServices _clientesServices;
     
     @GetMapping("/Clientes/Nuevo")
-    public String CrearClientes(){
-        //Cambiar el path a la la vista que se necesite
+    public String CrearClientes(Model model){
+        model.addAttribute("cliente", new Cliente());
         return "Clientes/CreateCustomers";
     }
     
-    @GetMapping("/Clientes/Landing")
-    public String Landing(){
-        //Cambiar el path a la la vista que se necesite
-        return "LandingPage";
+    @PostMapping("/Clientes/save")
+    public String saveCliente(@ModelAttribute Cliente clientes){
+        _clientesServices.saveClientes(clientes);
+        return "redirect:/Clientes/Index";
     }
     
     @GetMapping("/Clientes/Actualizar")
@@ -30,8 +39,9 @@ public class ClientesController {
     }
     
     @GetMapping("/Clientes/Index")
-    public String IndexClientes(){
-        //Cambiar el path a la la vista que se necesite
+    public String IndexClientes(Model model){
+        List<Cliente> listCustomers = _clientesServices.getClientes();
+        model.addAttribute("clientes", listCustomers);
         return "Clientes/IndexCustomers";
     }
 }

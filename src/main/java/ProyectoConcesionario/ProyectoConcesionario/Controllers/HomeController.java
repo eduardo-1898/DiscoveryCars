@@ -5,8 +5,15 @@
 package ProyectoConcesionario.ProyectoConcesionario.Controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class HomeController {
     
+    
+    @GetMapping("/Home/Index")
+    public String Landing(){
+        //Cambiar el path a la la vista que se necesite
+        return "LandingPage";
+    }
 }
