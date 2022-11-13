@@ -31,7 +31,7 @@ public class Mantenimiento implements Serializable{
     @Column(name="Placa")
     private String Placa;
     
-    @Column(name="DescripcionMantenimiento")
+    @Column(name="Descripcion_Mantenimiento")
     private String Descripcion_Mantenimiento;
     
     @Temporal(TemporalType.DATE)

@@ -1,22 +1,5 @@
-
-.breadcrumb{
-    margin-left: 10%;
-    padding-top: 1.5%;
-}
-
-.breadcrumb-item a{
-    text-decoration: none;
-    color: gray;
-    font-weight: bold;
-}
-
-.breadcrumb-item a:hover{
-    text-decoration: none;
-    color: black;
-}
-
-.form-section-1{
-    font-size: 15px;
+.form-section{
+    font-size: 10px;
 }
 
 p{

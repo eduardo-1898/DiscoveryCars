@@ -3,12 +3,13 @@
       xmlns:sec="http://www.thymeleaft.org/extras/spring-security">
     <head th:replace="/LandingPage::header"></head>
     <link th:href="@{/css/AdmVehicular.css}" rel="stylesheet" type="text/css">
-
     <body>
         <main>
 
             <div class="container">
-                <form>
+                <form th:object = "${vehiculo}"                          
+                      th:action="@{/Vehiculos/save}"                          
+                      method="POST">
                     <div class="row">
                         <div class="col-12 col-lg-6 col-sm-12" >
                             <div class="row mb-4 mt-4">
@@ -18,32 +19,38 @@
                                 <div class="row">
                                     <div class="col-12 col-md-6 col-sm-12 mb-2">
                                         <label>Numero de placa</label>
-                                        <input type="text" placeholder="Formato 111111111" class="form-control" required>
+                                        <input id="txtPlaca" th:field="*{placa}" type="text" class="form-control" required>
                                     </div>
                                     <div class="col-12 col-md-6 col-sm-12 mb-2">
                                         <label>Marca</label>
-                                        <select class="form-select" >
+                                        <select th:field="*{Marcas}" class="form-select" >
+                                            <option th:each="x:${marca}"                                            
+                                                    th:value="${x.Id}"                                            
+                                                    th:text="${x.Marca}"/>
                                         </select>
                                     </div>
                                     <div class="col-12 col-md-6 col-sm-12 mb-2">
                                         <label>Modelo</label>
-                                        <select class="form-select" >
+                                        <select th:field="*{Modelos}" class="form-select" >
+                                            <option th:each="x:${modelo}"                                            
+                                                    th:value="${x.Id}"                                            
+                                                    th:text="${x.Modelo}"/>
                                         </select>
                                     </div>
 
                                     <div class="col-12 col-md-6 col-sm-12 mb-2">
                                         <label>Año</label>
-                                        <input type="number" class="form-control" required>
+                                        <input th:field="*{Ano}" type="number" min="1980" th:max="${Year}" class="form-control" required>
                                     </div>
 
                                     <div class="col col-md-6 col-sm-12 mb-2">
                                         <label>Precio</label>
-                                        <input id="text" type="email" class="form-control" required>
+                                        <input th:field="*{Precio_Compra}" id="text" type="text" class="form-control" required>
                                     </div>
 
                                     <div class="col col-md-6 col-sm-12 mb-2">
                                         <label>Color</label>
-                                        <input type="text" class="form-control" required>
+                                        <input th:field="*{Color}" type="text" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -65,3 +72,29 @@
         <footer th:replace="/LandingPage::footer"></footer>
     </body>
 </html>
+
+<script>
+    $(document).ready(function () {
+        $("#txtPlaca").change(function() {
+            var placa = $("#txtPlaca").val();
+            if(placa!==""){
+                $.ajax({
+                    url: "/Api/PlacaExist",
+                    data: JSON.stringify({ "placa": placa }),
+                    type: 'POST',
+                    contentType:'application/json',
+                    success: function(data){
+                        debugger;
+                        if(data==="false"){
+                            swal.fire(
+                                'Ups!',
+                                'Este número de placa no se encuentra registrado',
+                                'error'    
+                            );
+                        }
+                    }
+                });   
+            }
+        });
+    });
+</script>

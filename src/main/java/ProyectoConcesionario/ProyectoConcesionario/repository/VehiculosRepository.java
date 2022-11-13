@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface VehiculosRepository extends CrudRepository<Vehiculos, Long>{
+public interface VehiculosRepository extends CrudRepository<Vehiculos, java.lang.String>{
     
 }

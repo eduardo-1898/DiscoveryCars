@@ -35,7 +35,7 @@
                                         <td th:text="${employes.getNombre_Empleado}"></td>
                                         <td th:text="${employes.getApellido1}"></td>
                                         <td th:text="${employes.getNombre_Usuario}"></td>
-                                        <td th:text="${employes.getRoles.getId}"></td>
+                                        <td th:text="${employes.getRoles.getNombre_Role}"></td>
                                         <td style="width: 9%;">
                                             <a class="btn btn-primary" th:href="@{/Empleados/edit/{id}(id=${employes.getId})}">
                                                 <i class="fas fa-pencil-alt"></i>
