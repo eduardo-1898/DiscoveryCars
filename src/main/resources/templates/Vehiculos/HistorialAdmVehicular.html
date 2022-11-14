@@ -31,12 +31,28 @@
                                         <th>Color</th> 
                                         <th>Precio</th> 
                                         <th>Estado</th> 
+                                        <th>Precio Compra</th> 
                                         <th>Modificar</th>
                                         <th>Eliminar</th>                                      
                                     </tr>
                                 </thead>
                                 <tbody>
-
+                                <th:block th:each="vehiculo : ${vehiculo}">
+                                    <tr>        
+                                        <td th:text="${vehiculo.getPlaca}"></td>
+                                        <td th:text="${vehiculo.getMarcas.getMarca}"></td>
+                                        <td th:text="${vehiculo.getModelos.getModelo}"></td>
+                                        <td th:text="${vehiculo.getAno}"></td>
+                                        <td th:text="${vehiculo.getColor}"></td>
+                                        <td th:text="${vehiculo.getEstado}"></td>  
+                                        <td th:text="${vehiculo.getPrecio_Compra}"></td> 
+                                        <td style="width: 9%;">
+                                            <a class="btn btn-primary" th:href="@{/Vehiculos/edit/{id}(id=${vehiculo.getId})}">
+                                                <i class="fas fa-pencil-alt"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </th:block>
                                 </tbody>
                             </table>
                         </div>
