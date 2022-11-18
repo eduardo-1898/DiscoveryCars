@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaft.com"
+      xmlns:sec="http://www.thymeleaft.org/extras/spring-security">
+
+    <head th:replace="/LandingPage::header"></head>
+    <link th:href="@{/css/RegistroMantenimiento.css}" rel="stylesheet" type="text/css">
+
+    <body>
+        <main>       
+            <div class="container">
+                <form th:object = "${mantenimiento}"                          
+                      th:action="@{/Mantenimiento/save}"                          
+                      method="POST">
+                    <div class="row">
+                        <div class="col-12 col-lg-6 col-sm-12" >
+                            <div class="row mb-4 mt-4">
+                                <h3>Servicios de mantenimiento</h3>
+                            </div>
+                            <div class="form-section">
+                                <div class="row">
+                                    <div class="col-12 col-md-6 col-sm-12 mb-2">
+                                        <label>Placa</label>
+                                        <input id="txtPlaca" th:field="*{Placa}" type="text" class="form-control" required>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-sm-12 mb-2">
+                                        <label>Departamento</label>
+                                        <select th:field="*{Departamentos}" class="form-select">
+                                            <option th:each="x:${departamento}"                                            
+                                                    th:value="${x.Id}"                                            
+                                                    th:text="${x.NombreDepartamento}"/>
+                                        </select>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-sm-12 mb-2">
+                                        <label>Empleado</label>
+                                        <select th:field="*{Empleados}" class="form-select">
+                                            <option th:each="x:${empleado}"                                            
+                                                    th:value="${x.Id}"                                            
+                                                    th:text="${x.Nombre_Usuario}"/>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-12 col-md-6 col-sm-12 mb-2">
+                                        <label>Fecha</label>
+                                        <input th:field="*{Fecha_Ingreso}" type="date" class="form-control" required>
+                                    </div>
+
+                                    <div class="col col-md-12 col-sm-12 mb-2">
+                                        <label>Descripción del mantenimiento</label>
+                                        <textarea th:field="*{Descripcion_Mantenimiento}" id="direccion" maxlength="275" type="text" class="form-control">
+                                        </textarea>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-success">
+                                            Agregar mantenimiento <i class="fas fa-car-crash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 col-sm-12">
+                            <img id="img-right-side" th:src="@{/images/carservice.jpg}" alt="car service"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </main>
+
+        <footer th:replace="/LandingPage::footer"></footer>
+    </body>
+
+</html>
+
+<script>
+    $(document).ready(function () {
+        $("#txtPlaca").change(function() {
+            var placa = $("#txtPlaca").val();
+            if(placa!==""){
+                $.ajax({
+                    url: "/Api/PlacaExist",
+                    data: JSON.stringify({ "placa": placa }),
+                    type: 'POST',
+                    contentType:'application/json',
+                    success: function(data){
+                        debugger;
+                        if(data==="false"){
+                            swal.fire(
+                                'Ups!',
+                                'Este número de placa no se encuentra registrado',
+                                'error'    
+                            );
+                        }
+                    }
+                });   
+            }
+        });
+    });
+</script>

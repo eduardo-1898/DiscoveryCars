@@ -1,0 +1,138 @@
+<html>
+    <head th:replace="/LandingPage::header"></head>
+    <link th:href="@{/css/CreateSales.css}" rel="stylesheet" type="text/css">
+
+    <body>
+        <main>
+            <div class="container">
+                <form>
+                    <div class="row">
+                        <div class="col-12 col-lg-6 col-sm-12" >
+
+                            <h4 class="mt-5 mb-4">Asignación de cliente</h4>
+                            <div class="row mb-3" id="findByCustomer">
+                                <div class="col col-lg-6">
+                                    <input type="text" class="form-control" placeholder="Cédula del cliente">                                        
+                                </div>
+                                <div class="col col-lg-3">
+                                    <button type="submit" formaction="buscar" class="btn btn-danger">
+                                        Buscar 
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row form-section">
+                                <div class="col-12 col-md-6 col-sm-12 mb-2">
+                                    <label>Cedula</label>
+                                    <input type="text" class="form-control" readonly>
+                                </div>
+                                <div class="col-12 col-md-6 col-sm-12 mb-2">
+                                    <label>Cliente</label>
+                                    <input type="text" class="form-control" readonly>
+                                </div>
+
+                                <div class="col-12 mb-2">
+                                    <label>Correo</label>
+                                    <input type="text" class="form-control" readonly>
+                                </div>
+                            </div>
+
+                            <div class="row mb-4 mt-4">
+                                <h3>Asignación de vehiculos</h3>
+                            </div>
+                            <div class="form-section">
+                                <div class="row mb-3" id="findByPlaca">
+                                    <div class="col">
+                                        <input type="text" class="form-control" placeholder="Placa">                                        
+                                    </div>
+                                    <div class="col">
+                                        <button type="submit" formaction="buscar" class="btn btn-danger">
+                                            Buscar <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-md-6 col-sm-12 mb-2">
+                                        <label>Placa</label>
+                                        <input type="text" class="form-control" readonly>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-sm-12 mb-2">
+                                        <label>Marca</label>
+                                        <input type="text" class="form-control" readonly>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-sm-12 mb-2">
+                                        <label>Modelo</label>
+                                        <input type="text" class="form-control" readonly>
+                                    </div>
+                                    <div class="col-12 col-md-3 col-sm-12 mb-2">
+                                        <label>Año</label>
+                                        <input type="number" class="form-control" readonly>
+                                    </div>
+                                    <div class="col col-md-3 col-sm-12 mb-2">
+                                        <label>Estado</label>
+                                        <input type="text" class="form-control" readonly>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <div class="row form-section">
+                                <div class="col-12 col-md-6 col-sm-12 mb-2">
+                                    <label>Descuento aplicado</label>
+                                    <input type="number" min="0" class="form-control">
+                                    <p class="mt-3">Nota: En caso de no realizar descuento al vehículo dejar en 0 o bien el espacio en blanco</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <button type="submit" class="btn btn-success">
+                                        Agregar al carrito <i class="fas fa-shopping-basket"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 col-sm-12">
+                            <div id="shopping-card" class="card-body mt-4">
+                                <h3 class="card-tittle text-center">Lista de vehículos</h3>
+                                <div id="conteiner-sales">
+                                    <div class="row">
+                                        <div class="col-12 mt-2">
+                                            <label style="font-size: 10px; font-weight: bold;">Vehiculo Hyudai Tucson 2021</label>
+                                        </div>
+                                        <div class="col-12">
+                                            <label style="font-size: 9px; color:green">Precio: $24,000</label>
+                                        </div>
+                                        <div class="col-12">
+                                            <hr>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 mt-2">
+                                            <label style="font-size: 10px; font-weight: bold;">Vehiculo Hyudai Tucson 2022</label>
+                                        </div>
+                                        <div class="col-12">
+                                            <label style="font-size: 9px; color:green">Precio: $24,000</label>
+                                        </div>
+                                        <div class="col-12">
+                                            <hr>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <button class="btn btn-success">
+                                            Finalizar venta <i class="fas fa-shopping-basket"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </main>
+
+        <footer th:replace="/LandingPage::footer"></footer>
+    </body>
+</html>

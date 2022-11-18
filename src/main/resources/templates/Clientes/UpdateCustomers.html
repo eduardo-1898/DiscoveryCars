@@ -1,0 +1,76 @@
+<html xmlns:th="http://www.thymeleaft.com"
+      xmlns:sec="http://www.thymeleaft.org/extras/spring-security">
+
+    <head th:replace="/LandingPage::header"></head>
+    <link th:href="@{/css/CreateCustomers.css}" rel="stylesheet" type="text/css">
+
+    <body>
+        <main>
+            <div class="container">
+                <form>
+                    <div class="row">
+                        <div class="col-12 col-lg-6 col-sm-12" >
+                            <div class="row mb-4 mt-4">
+                                <h3>Actualización de clientes</h3>
+                            </div>
+
+                            <div class="form-section">
+
+                                <div class="row">
+                                    <div class="col-12 col-md-6 col-sm-12 mb-2">
+                                        <label>Cedula</label>
+                                        <input type="text" placeholder="Formato 111111111" class="form-control" readonly>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-sm-12 mb-2">
+                                        <label>Nombre</label>
+                                        <input type="text" class="form-control" required>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-sm-12 mb-2">
+                                        <label>Apellido 1</label>
+                                        <input type="text" class="form-control" required>
+                                    </div>
+
+                                    <div class="col-12 col-md-6 col-sm-12 mb-2">
+                                        <label>Apellido 2</label>
+                                        <input type="text" class="form-control" required>
+                                    </div>
+
+                                    <div class="col col-md-6 col-sm-12 mb-2">
+                                        <label>Correo</label>
+                                        <input id="email" type="email" class="form-control" required>
+                                    </div>
+
+                                    <div class="col col-md-6 col-sm-12 mb-2">
+                                        <label>Telefono</label>
+                                        <input type="number" placeholder="Formato 88888888" class="form-control" required>
+                                    </div>
+
+                                    <div class="col col-md-12 col-sm-12 mb-2">
+                                        <label>Dirección</label>
+                                        <textarea maxlength="250" type="text" class="form-control" required>
+                                        </textarea>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-success">
+                                            Actualizar cliente <i class="fas fa-user"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                        <div class="col-12 col-lg-6 col-sm-12">
+                            <img id="img-right-side" th:src="@{/images/carAdmVehicular.jpg}" alt="car service"/>
+                        </div>
+                </form>
+            </div>
+        </main>
+
+        <footer th:replace="/LandingPage::footer"></footer>
+
+    </body>
+</html>

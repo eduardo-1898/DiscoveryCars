@@ -1,0 +1,26 @@
+.form-section{
+    font-size: 10px;
+}
+
+p{
+    font-size: 10px;
+    color: gray;
+}
+
+#img-right-side{
+    margin: 5px 0px 0px 30%;
+    width: 50%;
+    height: 100%;
+}
+
+#table-customers{
+    width: 100%;
+}
+
+.table-responsive{
+    font-size: 1.4rem;
+}
+
+#shopping-card{
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}

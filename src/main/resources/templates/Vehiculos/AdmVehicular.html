@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaft.com"
+      xmlns:sec="http://www.thymeleaft.org/extras/spring-security">
+    <head th:replace="/LandingPage::header"></head>
+    <link th:href="@{/css/AdmVehicular.css}" rel="stylesheet" type="text/css">
+    <body>
+        <main>
+
+            <div class="container">
+                <form th:object = "${vehiculo}"                          
+                      th:action="@{/Vehiculos/save}"                          
+                      method="POST">
+                    <div class="row">
+                        <div class="col-12 col-lg-6 col-sm-12" >
+                            <div class="row mb-4 mt-4">
+                                <h3>Registro nuevo vehiculo</h3>
+                            </div>
+                            <div class="form-section">
+                                <div class="row">
+                                    <div class="col-12 col-md-6 col-sm-12 mb-2">
+                                        <label>Numero de placa</label>
+                                        <input id="txtPlaca" th:field="*{placa}" type="text" class="form-control" required>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-sm-12 mb-2">
+                                        <label>Marca</label>
+                                        <select th:field="*{Marcas}" class="form-select" >
+                                            <option th:each="x:${marca}"                                            
+                                                    th:value="${x.Id}"                                            
+                                                    th:text="${x.Marca}"/>
+                                        </select>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-sm-12 mb-2">
+                                        <label>Modelo</label>
+                                        <select th:field="*{Modelos}" class="form-select" >
+                                            <option th:each="x:${modelo}"                                            
+                                                    th:value="${x.Id}"                                            
+                                                    th:text="${x.Modelo}"/>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-12 col-md-6 col-sm-12 mb-2">
+                                        <label>Año</label>
+                                        <input th:field="*{Ano}" type="number" min="1980" th:max="${Year}" class="form-control" required>
+                                    </div>
+
+                                    <div class="col col-md-6 col-sm-12 mb-2">
+                                        <label>Precio</label>
+                                        <input th:field="*{Precio_Compra}" id="text" type="text" class="form-control" required>
+                                    </div>
+
+                                    <div class="col col-md-6 col-sm-12 mb-2">
+                                        <label>Color</label>
+                                        <input th:field="*{Color}" type="text" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-success">
+                                            Agregar vehiculo <i class="fas fa-car"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 col-sm-12">
+                            <img id="img-right-side" th:src="@{/images/carAdmVehicular.jpg}" alt="car service"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </main>
+        <footer th:replace="/LandingPage::footer"></footer>
+    </body>
+</html>
+
+<script>
+    $(document).ready(function () {
+        $("#txtPlaca").change(function() {
+            var placa = $("#txtPlaca").val();
+            if(placa!==""){
+                $.ajax({
+                    url: "/Api/PlacaExist",
+                    data: JSON.stringify({ "placa": placa }),
+                    type: 'POST',
+                    contentType:'application/json',
+                    success: function(data){
+                        debugger;
+                        if(data==="false"){
+                            swal.fire(
+                                'Ups!',
+                                'Este número de placa no se encuentra registrado',
+                                'error'    
+                            );
+                        }
+                    }
+                });   
+            }
+        });
+    });
+</script>

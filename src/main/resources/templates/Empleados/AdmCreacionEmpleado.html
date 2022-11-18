@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaft.com"
+      xmlns:sec="http://www.thymeleaft.org/extras/spring-security">
+
+    <head th:replace="/LandingPage::header"></head>
+    <link th:href="@{/css/AdmCreacionEmpleado.css}" rel="stylesheet" type="text/css">
+
+    <body>
+        <main>
+            <div class="container">
+                <form th:object = "${empleados}"
+                      th:action="@{/Empleados/save}"                          
+                      method="POST">
+                    <div class="row">
+                        <div class="col-12 col-lg-6 col-sm 12">
+                            <div class="row mb-4 mt-4">
+                                <h3>Registro de nuevo empleado</h3>
+                            </div>
+                            <div class="form-section">
+                                <div class="row">
+                                    <div class="col-12 col-md-6 col-sm-12 mb-2">
+                                        <label>Nombre</label>
+                                        <input th:field="*{Nombre_Empleado}" class="form-control" type="text" required>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-sm-12 mb-2">
+                                        <label>Apellido</label>
+                                        <input th:field="*{Apellido1}" class="form-control" type="text" required>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-sm-12 mb-2">
+                                        <label>Cedula</label>
+                                        <input th:field="*{Cedula}" class="form-control" type="text" placeholder="Formato 111111111" required>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-sm-12 mb-2">
+                                        <label>Rol</label>
+                                        <select th:field="*{Roles}" class="form-select">
+                                            <option th:each="x:${rol}"                                            
+                                                    th:value="${x.Id}"                                            
+                                                    th:text="${x.Nombre_Role}"/>
+                                        </select>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-sm-12 mb-2">
+                                        <label>Nombre de usuario</label>
+                                        <input th:field="*{Nombre_Usuario}" class="form-control" type="text"required>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-sm-12 mb-2">
+                                        <div class="input-box">
+                                            <label>Contraseña</label>
+                                            <input th:field="*{Password}" type="password" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-4 col-sm-8 mt-3">
+                                        <button class="btn btn-success" type="submit">
+                                            Agregar empleado <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </main>
+        <footer th:replace="/LandingPage::footer"></footer>
+    </body>
+</html>

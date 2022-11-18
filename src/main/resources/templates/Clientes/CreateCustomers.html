@@ -1,0 +1,68 @@
+<html xmlns:th="http://www.thymeleaft.com"
+      xmlns:sec="http://www.thymeleaft.org/extras/spring-security">
+
+    <head th:replace="/LandingPage::header"></head>
+    <link th:href="@{/css/CreateCustomers.css}" rel="stylesheet" type="text/css">
+
+    <body>
+        <main>
+            <div class="container">
+                <form th:object = "${cliente}"                          
+                          th:action="@{/Clientes/save}"                          
+                          method="POST">
+                    <div class="row">
+                        <div class="col-12 col-lg-6 col-sm-12" >
+                            <div class="row mb-4 mt-4">
+                                <h3>Creación de clientes</h3>
+                            </div>
+                            <div class="form-section">
+                                <div class="row">
+                                    <div class="col-12 col-md-6 col-sm-12 mb-2">
+                                        <label>Cedula</label>
+                                        <input th:field="*{Cedula}" type="text" placeholder="Formato 111111111" class="form-control" required>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-sm-12 mb-2">
+                                        <label>Nombre</label>
+                                        <input th:field="*{NombreCliente}" type="text" class="form-control" required>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-sm-12 mb-2">
+                                        <label>Apellido 1</label>
+                                        <input th:field="*{Apellido1}" type="text" class="form-control" required>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-sm-12 mb-2">
+                                        <label>Apellido 2</label>
+                                        <input th:field="*{Apellido2}" type="text" class="form-control" required>
+                                    </div>
+                                    <div class="col col-md-6 col-sm-12 mb-2">
+                                        <label>Correo</label>
+                                        <input th:field="*{Correo}" id="email" type="email" class="form-control" required>
+                                    </div>
+                                    <div class="col col-md-6 col-sm-12 mb-2">
+                                        <label>Telefono</label>
+                                        <input th:field="*{telefono}" type="number" placeholder="Formato 88888888" class="form-control" required>
+                                    </div>
+                                    <div class="col col-md-12 col-sm-12 mb-2">
+                                        <label>Dirección</label>
+                                        <textarea th:field="*{Direccion}" id="direccion" maxlength="250" type="text" class="form-control" required>
+                                        </textarea>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-success">
+                                            Agregar cliente <i class="fas fa-user"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 col-sm-12">
+                            <img id="img-right-side" th:src="@{/images/carAdmVehicular.jpg}" alt="car service"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </main>
+        <footer th:replace="/LandingPage::footer"></footer>
+    </body>
+</html>
