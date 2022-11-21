@@ -25,11 +25,12 @@
                                     <th>Detalle</th>
                                     <th>Registrado Por</th>
                                     <th>Departamento</th>   
-                                    <th>Eliminar</th>                                   
+                                    <th>Editar</th>
+                                    <th>Eliminar</th>
                                 </tr>
                             </thead>
                             <tbody>
-                            <th:block th:each="mantenimiento : ${mantenimiento}">
+                            <th:block th:each="mantenimiento : ${mantenimientos}">
                                 <tr>        
                                     <td th:text="${mantenimiento.getId}"></td>
                                     <td th:text="${mantenimiento.getFecha_Ingreso}"></td>
@@ -38,12 +39,14 @@
                                     <td th:text="${mantenimiento.getEmpleados.getNombre_Empleado}"></td>
                                     <td th:text="${mantenimiento.getDepartamentos.getNombreDepartamento}"></td>       
                                     <td style="width: 9%;">
-                                        <a class="btn btn-primary" th:href="@{/Mantenimiento/edit/{id}(id=${mantenimiento.getId})}">
+                                        <a class="btn btn-primary text-white" th:href="@{/Mantenimiento/Actualizar/{id}(id=${mantenimiento.getId})}">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
                                     </td>
-                                    <td>
-                                        <a th:href="@{Mantenimiento/delete/{id}(id=${mantenimiento.getId})}">Eliminar</a>
+                                    <td style="width: 9%;">
+                                        <a class="btn btn-danger text-white" th:href="@{/Mantenimiento/delete/{id}(id=${mantenimiento.getId})}">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
                                     </td>
                                 </tr>
                             </th:block>

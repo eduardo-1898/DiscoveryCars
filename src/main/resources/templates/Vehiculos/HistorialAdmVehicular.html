@@ -29,11 +29,9 @@
                                         <th>Modelo</th>
                                         <th>Año</th>
                                         <th>Color</th> 
-                                        <th>Precio</th> 
-                                        <th>Estado</th> 
+                                        <th>Estado</th>
                                         <th>Precio Compra</th> 
-                                        <th>Modificar</th>
-                                        <th>Eliminar</th>                                      
+                                        <th>Modificar</th>                                    
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -44,10 +42,10 @@
                                         <td th:text="${vehiculo.getModelos.getModelo}"></td>
                                         <td th:text="${vehiculo.getAno}"></td>
                                         <td th:text="${vehiculo.getColor}"></td>
-                                        <td th:text="${vehiculo.getEstado}"></td>  
-                                        <td th:text="${vehiculo.getPrecio_Compra}"></td> 
+                                        <td th:text="${vehiculo.getEstado}? 'Disponible': 'No Disponible'"></td>  
+                                        <td th:text="${#numbers.formatDecimal(vehiculo.Precio_Compra, 1, 'COMMA', 0, 'POINT')}"></td> 
                                         <td style="width: 9%;">
-                                            <a class="btn btn-primary" th:href="@{/Vehiculos/edit/{id}(id=${vehiculo.getId})}">
+                                            <a class="btn btn-primary text-white" th:href="@{/Vehiculos/Actualizar/{id}(id=${vehiculo.getPlaca})}">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </a>
                                         </td>

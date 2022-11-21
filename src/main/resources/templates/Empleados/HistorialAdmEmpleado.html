@@ -37,7 +37,7 @@
                                         <td th:text="${employes.getNombre_Usuario}"></td>
                                         <td th:text="${employes.getRoles.getNombre_Role}"></td>
                                         <td style="width: 9%;">
-                                            <a class="btn btn-primary" th:href="@{/Empleados/edit/{id}(id=${employes.getId})}">
+                                            <a class="btn btn-primary text-white" th:href="@{/Empleados/Actualizar/{id}(id=${employes.getId})}">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </a>
                                         </td>

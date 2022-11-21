@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -32,14 +33,16 @@ public class MantenimientoController {
     private IEmpleadoServices _empleadoServices;
     
     @GetMapping("/Mantenimiento/Index")
-    public String IndexMantenimientos(){ 
+    public String IndexMantenimientos(Model model){
+        List<Mantenimiento> listMantenimientos = _mantenimientoServices.getMantenimientos();
+        model.addAttribute("mantenimientos", listMantenimientos);
         return "Mantenimiento/HistorialMantenimiento";
     }
     
     @PostMapping("/Mantenimiento/save")
     public String saveMantenimiento(@ModelAttribute Mantenimiento mantenimiento){
         _mantenimientoServices.saveMantenimientos(mantenimiento);
-        return "redirect:/Clientes/Index";
+        return "redirect:/Mantenimiento/Index";
     }
     
     @GetMapping("/Mantenimiento/Nuevo")
@@ -59,6 +62,33 @@ public class MantenimientoController {
         model.addAttribute("departamento", listDepartments);
         model.addAttribute("mantenimiento", new Mantenimiento());
         return "Mantenimiento/RegistroMantenimiento";
+    }
+    
+    @GetMapping("/Mantenimiento/Actualizar/{id}")
+    public String ActualizarMantenimiento(@PathVariable("id") Long idMantenimiento, Model model){
+        
+        List<Departamento> listDepartments = _departamentoServices.getDepartamentos();
+        Collections.sort(listDepartments, (a, b)->{
+            return a.getNombreDepartamento().compareTo(b.getNombreDepartamento());
+        });
+        
+        List<Empleado> listEmployees = _empleadoServices.getEmpleados();
+        Collections.sort(listEmployees, (a, b)->{
+            return a.getNombre_Usuario().compareTo(b.getNombre_Usuario());
+        });
+        Mantenimiento getMaintenance = _mantenimientoServices.getMantenimientosById(idMantenimiento);
+        
+        model.addAttribute("empleado", listEmployees);
+        model.addAttribute("departamento", listDepartments);
+        model.addAttribute("mantenimiento", getMaintenance);
+        return "Mantenimiento/UpdateMaintenance";
+    }
+    
+    
+    @GetMapping("/Mantenimiento/delete/{id}")
+    public String deleteConcierto(@PathVariable("id") long idMantenimiento){
+        _mantenimientoServices.deleteMantenimientos(idMantenimiento);
+        return "redirect:/Mantenimiento/Index";
     }
     
 }

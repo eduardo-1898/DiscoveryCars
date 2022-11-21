@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -36,6 +37,20 @@ public class EmpleadosController {
         model.addAttribute("empleados", new Empleado());
         model.addAttribute("rol", listRoles);
         return "Empleados/AdmCreacionEmpleado";
+    }
+    
+    @GetMapping("/Empleados/Actualizar/{id}")
+    public String ActualizarEmpleado(@PathVariable("id") Long idMantenimiento ,Model model){
+        List<Roles> listRoles = _rolesServices.getRoles();
+        Collections.sort(listRoles, (a, b)->{
+            return a.getNombre_Role().compareTo(b.getNombre_Role());
+        });
+        
+        Empleado getEmpleado = _empleadoServices.getEmpleadosById(idMantenimiento);
+        
+        model.addAttribute("empleados", getEmpleado);
+        model.addAttribute("rol", listRoles);
+        return "Empleados/UpdateEmployees";
     }
     
     @GetMapping("/Empleados/Index")

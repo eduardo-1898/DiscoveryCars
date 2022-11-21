@@ -13,8 +13,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import lombok.Data;
 
 
+@Data
 @Entity
 @Table(name="Empleado")
 public class Empleado implements Serializable {
@@ -27,13 +29,13 @@ public class Empleado implements Serializable {
     @Column(name="Cedula")
     private String Cedula;
     
-    @Column(name="NombreEmpleado")
+    @Column(name="Nombre_Empleado")
     private String Nombre_Empleado;
     
     @Column(name="Apellido1")    
     private String Apellido1;    
     
-    @Column(name="NombreUsuario")
+    @Column(name="Nombre_Usuario")
     private String Nombre_Usuario;
     
     @Column(name="Password")

@@ -4,6 +4,7 @@
  */
 package ProyectoConcesionario.ProyectoConcesionario.Controllers;
 
+import ProyectoConcesionario.ProyectoConcesionario.entity.Cliente;
 import ProyectoConcesionario.ProyectoConcesionario.entity.Marca;
 import ProyectoConcesionario.ProyectoConcesionario.entity.Modelo;
 import ProyectoConcesionario.ProyectoConcesionario.entity.Vehiculos;
@@ -19,6 +20,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 /**
@@ -62,15 +64,39 @@ public class VehiculosController {
         return "Vehiculos/AdmVehicular";
     }
     
+    @GetMapping("/Vehiculos/Actualizar/{id}")
+    public String ActualizarClientes(@PathVariable("id") String placa, Model model){
+
+        List<Modelo> listModelos = _modeloServices.getModelos();
+        Collections.sort(listModelos, (a, b)->{
+            return a.getModelo().compareTo(b.getModelo());
+        });
+        
+        List<Marca> listMarcas = _marcaServices.getMarcas();
+        Collections.sort(listMarcas, (a, b)->{
+            return a.getMarca().compareTo(b.getMarca());
+        });
+        
+        Vehiculos DataVehicle = _vehiculoServices.getVehiculosById(placa);
+        
+        model.addAttribute("modelo", listModelos);
+        model.addAttribute("marca", listMarcas);
+        model.addAttribute("vehiculo", DataVehicle);
+        
+        return "Vehiculos/UpdateVehicle";
+    }
+    
     @GetMapping("/Vehiculos/Index")
-    public String IndexVehiculo(){
+    public String IndexVehiculo(Model model){
+        List<Vehiculos> getVehicles = _vehiculoServices.getVehiculos();
+        model.addAttribute("vehiculo", getVehicles);
         return "Vehiculos/HistorialAdmVehicular";
     }
     
     @PostMapping("/Vehiculos/save")
     public String SaveVehiculos(@ModelAttribute Vehiculos vehiculos){
         _vehiculoServices.saveVehiculos(vehiculos);
-        return "redirect:Vehiculos/Index";
+        return "redirect:/Vehiculos/Index";
     }
     
     //Metodo privado para obtener el año actual del servidor.

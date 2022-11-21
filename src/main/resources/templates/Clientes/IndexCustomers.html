@@ -1,8 +1,11 @@
+<!DOCTYPE html>
+
 <html xmlns:th="http://www.thymeleaft.com"
       xmlns:sec="http://www.thymeleaft.org/extras/spring-security">
+    
     <head th:replace="/LandingPage::header"></head>
-    <link th:href="@{/css/CreateCustomers.css}" rel="stylesheet" type="text/css">
-
+    <link th:href="@{/css/HistorialAdmVehicular.css}" rel="stylesheet" type="text/css">
+    
     <body>
         <main>
             <div class="container">
@@ -11,7 +14,6 @@
                         <div class="row mb-4 mt-4">
                             <h3>Actualización de clientes</h3>
                         </div>
-
                         <a th:href="@{/Clientes/Nuevo}" class="btn btn-success mb-4 text-white">
                             Nuevo <i class="fas fa-plus"></i>
                         </a>
@@ -28,7 +30,7 @@
                                         <th>Editar</th>                                                                                
                                     </tr>
                                 </thead>
-                            <tbody>
+                                <tbody>
                                 <th:block th:each="customer : ${clientes}">
                                     <tr>
                                         <td th:text="${customer.getCedula}"></td>
@@ -37,25 +39,22 @@
                                         <td th:text="${customer.getApellido2}"></td>
                                         <td th:text="${customer.getCorreo}"></td>
                                         <td style="width: 9%;">
-                                            <a class="btn btn-primary" th:href="@{/Clientes/edit/{id}(id=${customer.getId})}">
+                                            <a class="btn btn-primary text-white" th:href="@{/Clientes/Actualizar/{id}(id=${customer.getId})}">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </a>
                                         </td>
                                     </tr>
-                                </th>
-                            </tbody>
+                                    </th>
+                                </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
         </main>
-        <footer th:replace="/LandingPage::footer">
-            
-        </footer>
+        <footer th:replace="/LandingPage::footer"></footer>
     </body>
 </html>
-
 <script>
     $(document).ready(function () {
         $('#table-customers').DataTable({

@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head th:replace="/LandingPage::header"></head>
     <link th:href="@{/css/CreateSales.css}" rel="stylesheet" type="text/css">
@@ -12,10 +13,10 @@
                             <h4 class="mt-5 mb-4">Asignación de cliente</h4>
                             <div class="row mb-3" id="findByCustomer">
                                 <div class="col col-lg-6">
-                                    <input type="text" class="form-control" placeholder="Cédula del cliente">                                        
+                                    <input id="txtDNISearch" type="text" class="form-control" placeholder="Cédula del cliente">                                        
                                 </div>
                                 <div class="col col-lg-3">
-                                    <button type="submit" formaction="buscar" class="btn btn-danger">
+                                    <button th:onclick="searchCustomer()" type="button"  formaction="buscar" class="btn btn-danger">
                                         Buscar 
                                         <i class="fas fa-search"></i>
                                     </button>
@@ -24,16 +25,16 @@
                             <div class="row form-section">
                                 <div class="col-12 col-md-6 col-sm-12 mb-2">
                                     <label>Cedula</label>
-                                    <input type="text" class="form-control" readonly>
+                                    <input id="txtDNI" type="text" class="form-control" readonly>
                                 </div>
                                 <div class="col-12 col-md-6 col-sm-12 mb-2">
                                     <label>Cliente</label>
-                                    <input type="text" class="form-control" readonly>
+                                    <input id="txtName" type="text" class="form-control" readonly>
                                 </div>
 
                                 <div class="col-12 mb-2">
                                     <label>Correo</label>
-                                    <input type="text" class="form-control" readonly>
+                                    <input id="txtEmail" type="text" class="form-control" readonly>
                                 </div>
                             </div>
 
@@ -43,10 +44,10 @@
                             <div class="form-section">
                                 <div class="row mb-3" id="findByPlaca">
                                     <div class="col">
-                                        <input type="text" class="form-control" placeholder="Placa">                                        
+                                        <input id="txtPlacaSearch" type="text" class="form-control" placeholder="Placa">                                        
                                     </div>
                                     <div class="col">
-                                        <button type="submit" formaction="buscar" class="btn btn-danger">
+                                        <button th:onclick="searchVehicle()" type="button" formaction="buscar" class="btn btn-danger">
                                             Buscar <i class="fas fa-search"></i>
                                         </button>
                                     </div>
@@ -54,33 +55,31 @@
                                 <div class="row">
                                     <div class="col-12 col-md-6 col-sm-12 mb-2">
                                         <label>Placa</label>
-                                        <input type="text" class="form-control" readonly>
+                                        <input id="txtPlaca" type="text" class="form-control" readonly>
                                     </div>
                                     <div class="col-12 col-md-6 col-sm-12 mb-2">
                                         <label>Marca</label>
-                                        <input type="text" class="form-control" readonly>
+                                        <input id="txtMarca" type="text" class="form-control" readonly>
                                     </div>
                                     <div class="col-12 col-md-6 col-sm-12 mb-2">
                                         <label>Modelo</label>
-                                        <input type="text" class="form-control" readonly>
+                                        <input id="txtModelo" type="text" class="form-control" readonly>
                                     </div>
                                     <div class="col-12 col-md-3 col-sm-12 mb-2">
                                         <label>Año</label>
-                                        <input type="number" class="form-control" readonly>
+                                        <input id="txtAño" type="number" class="form-control" readonly>
                                     </div>
                                     <div class="col col-md-3 col-sm-12 mb-2">
                                         <label>Estado</label>
-                                        <input type="text" class="form-control" readonly>
+                                        <input id="txtEstado" type="text" class="form-control" readonly>
                                     </div>
                                 </div>
-
-
                             </div>
 
                             <div class="row form-section">
                                 <div class="col-12 col-md-6 col-sm-12 mb-2">
                                     <label>Descuento aplicado</label>
-                                    <input type="number" min="0" class="form-control">
+                                    <input id="txtDescuento" type="number" min="0" class="form-control">
                                     <p class="mt-3">Nota: En caso de no realizar descuento al vehículo dejar en 0 o bien el espacio en blanco</p>
                                 </div>
                             </div>
@@ -136,3 +135,6 @@
         <footer th:replace="/LandingPage::footer"></footer>
     </body>
 </html>
+
+
+<script th:src="@{/js/sales.js}" type="text/javascript"></script>
