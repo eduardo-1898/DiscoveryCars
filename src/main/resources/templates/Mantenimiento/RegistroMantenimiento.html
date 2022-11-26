@@ -15,16 +15,16 @@
                     <div class="row">
                         <div class="col-12 col-lg-6 col-sm-12" >
                             <div class="row mb-4 mt-4">
-                                <h3>Servicios de mantenimiento</h3>
+                                <h3 th:text="#{mant.nuevo}"></h3>
                             </div>
                             <div class="form-section">
                                 <div class="row">
                                     <div class="col-12 col-md-6 col-sm-12 mb-2">
-                                        <label>Placa</label>
+                                        <label th:text="#{mant.placa}"></label>
                                         <input id="txtPlaca" th:field="*{Placa}" type="text" class="form-control" required>
                                     </div>
                                     <div class="col-12 col-md-6 col-sm-12 mb-2">
-                                        <label>Departamento</label>
+                                        <label th:text="#{mant.departamento}"></label>
                                         <select th:field="*{Departamentos}" class="form-select">
                                             <option th:each="x:${departamento}"                                            
                                                     th:value="${x.Id}"                                            
@@ -32,7 +32,7 @@
                                         </select>
                                     </div>
                                     <div class="col-12 col-md-6 col-sm-12 mb-2">
-                                        <label>Empleado</label>
+                                        <label th:text="#{mant.empleado}"></label>
                                         <select th:field="*{Empleados}" class="form-select">
                                             <option th:each="x:${empleado}"                                            
                                                     th:value="${x.Id}"                                            
@@ -41,12 +41,12 @@
                                     </div>
 
                                     <div class="col-12 col-md-6 col-sm-12 mb-2">
-                                        <label>Fecha</label>
+                                        <label th:text="#{mant.fecha}"></label>
                                         <input th:field="*{Fecha_Ingreso}" type="date" class="form-control" required>
                                     </div>
 
                                     <div class="col col-md-12 col-sm-12 mb-2">
-                                        <label>Descripción del mantenimiento</label>
+                                        <label th:text="#{mant.descrip}"></label>
                                         <textarea th:field="*{Descripcion_Mantenimiento}" id="direccion" maxlength="275" type="text" class="form-control">
                                         </textarea>
                                     </div>

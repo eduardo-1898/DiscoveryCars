@@ -110,11 +110,11 @@
                     <li><a id="style-1" href="url">Twitter</a></li>
                     <li><a id="style-1" href="url">Instagram</a></li>
                 </ul>
-                <div>
-                    <a th:with="urlBuilder=${T(org.springframework.web.servlet.support.ServletUriComponentsBuilder).fromCurrentRequest()}"
-                       th:href="${urlBuilder.replaceQueryParam('lang','es').toUriString()}">ES</a>
-                    <a th:with="urlBuilder=${T(org.springframework.web.servlet.support.ServletUriComponentsBuilder).fromCurrentRequest()}"
-                       th:href="${urlBuilder.replaceQueryParam('lang','en').toUriString()}">EN</a>
+                <div class="container-lang">
+                    <a class="lang" th:with="urlBuilder=${T(org.springframework.web.servlet.support.ServletUriComponentsBuilder).fromCurrentRequest()}"
+                       th:href="${urlBuilder.replaceQueryParam('lang','es').toUriString()}">Español</a>
+                    <a class="lang" th:with="urlBuilder=${T(org.springframework.web.servlet.support.ServletUriComponentsBuilder).fromCurrentRequest()}"
+                       th:href="${urlBuilder.replaceQueryParam('lang','en').toUriString()}">English</a>
                 </div>
             </div>
 

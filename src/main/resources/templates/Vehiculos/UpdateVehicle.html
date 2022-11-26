@@ -13,16 +13,16 @@
                     <div class="row">
                         <div class="col-12 col-lg-6 col-sm-12" >
                             <div class="row mb-4 mt-4">
-                                <h3>Registro nuevo vehiculo</h3>
+                                <h3 th:text="#{vehiculo.titulo3}"></h3>
                             </div>
                             <div class="form-section">
                                 <div class="row">
                                     <div class="col-12 col-md-6 col-sm-12 mb-2">
-                                        <label>Numero de placa</label>
+                                        <label th:text="#{mant.placa}"></label>
                                         <input id="txtPlaca" th:field="*{placa}" type="text" class="form-control" required readonly>
                                     </div>
                                     <div class="col-12 col-md-6 col-sm-12 mb-2">
-                                        <label>Marca</label>
+                                        <label th:text="#{vehiculo.marca}"></label>
                                         <select th:field="*{Marcas}" class="form-select" >
                                             <option th:each="x:${marca}"                                            
                                                     th:value="${x.Id}"                                            
@@ -30,7 +30,7 @@
                                         </select>
                                     </div>
                                     <div class="col-12 col-md-6 col-sm-12 mb-2">
-                                        <label>Modelo</label>
+                                        <label th:text="#{vehiculo.modelo}"></label>
                                         <select th:field="*{Modelos}" class="form-select" >
                                             <option th:each="x:${modelo}"                                            
                                                     th:value="${x.Id}"                                            
@@ -39,22 +39,22 @@
                                     </div>
 
                                     <div class="col-12 col-md-6 col-sm-12 mb-2">
-                                        <label>Año</label>
+                                        <label th:text="#{vehiculo.anio}"></label>
                                         <input th:field="*{Ano}" type="number" min="1980" th:max="${Year}" class="form-control" required>
                                     </div>
 
                                     <div class="col col-md-6 col-sm-12 mb-2">
-                                        <label>Precio</label>
+                                        <label th:text="#{vehiculo.precio}"></label>
                                         <input th:field="*{Precio_Compra}" id="text" type="text" class="form-control" required>
                                     </div>
 
                                     <div class="col col-md-6 col-sm-12 mb-2">
-                                        <label>Color</label>
+                                        <label th:text="#{vehiculo.color}"></label>
                                         <input th:field="*{Color}" type="text" class="form-control" required>
                                     </div>
                                     
                                     <div class="col col-md-6 col-sm-12 mb-3 mx-3 mt-2 form-check form-switch">
-                                        <label class="form-check-label">Estado</label>
+                                        <label class="form-check-label" th:text="#{vehiculo.estado}"></label>
                                         <input th:field="*{Estado}" type="checkbox" class="form-check-input" required>
                                     </div>
                                 </div>

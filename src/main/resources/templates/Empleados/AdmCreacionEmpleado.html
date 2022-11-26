@@ -14,24 +14,24 @@
                     <div class="row">
                         <div class="col-12 col-lg-6 col-sm 12">
                             <div class="row mb-4 mt-4">
-                                <h3>Registro de nuevo empleado</h3>
+                                <h3 th:text="#{empleado.registro}"></h3>
                             </div>
                             <div class="form-section">
                                 <div class="row">
                                     <div class="col-12 col-md-6 col-sm-12 mb-2">
-                                        <label>Nombre</label>
+                                        <label th:text="#{empleado.cliente.nombre}"></label>
                                         <input th:field="*{Nombre_Empleado}" class="form-control" type="text" required>
                                     </div>
                                     <div class="col-12 col-md-6 col-sm-12 mb-2">
-                                        <label>Apellido</label>
+                                        <label th:text="#{empleado.cliente.apellido}"></label>
                                         <input th:field="*{Apellido1}" class="form-control" type="text" required>
                                     </div>
                                     <div class="col-12 col-md-6 col-sm-12 mb-2">
-                                        <label>Cedula</label>
-                                        <input th:field="*{Cedula}" class="form-control" type="text" placeholder="Formato 111111111" required>
+                                        <label th:text="#{empleado.cliente.cedula}"></label>
+                                        <input th:field="*{Cedula}" class="form-control" type="text" th:placeholder="#{empleado.cliente.formatoCedula}" required>
                                     </div>
                                     <div class="col-12 col-md-6 col-sm-12 mb-2">
-                                        <label>Rol</label>
+                                        <label th:text="#{empleado.rol}"></label>
                                         <select th:field="*{Roles}" class="form-select">
                                             <option th:each="x:${rol}"                                            
                                                     th:value="${x.Id}"                                            
@@ -39,12 +39,12 @@
                                         </select>
                                     </div>
                                     <div class="col-12 col-md-6 col-sm-12 mb-2">
-                                        <label>Nombre de usuario</label>
+                                        <label th:text="#{empleado.user}"></label>
                                         <input th:field="*{Nombre_Usuario}" class="form-control" type="text"required>
                                     </div>
                                     <div class="col-12 col-md-6 col-sm-12 mb-2">
                                         <div class="input-box">
-                                            <label>Contraseña</label>
+                                            <label th:text="#{login.password}"></label>
                                             <input th:field="*{Password}" type="password" class="form-control" required>
                                         </div>
                                     </div>
