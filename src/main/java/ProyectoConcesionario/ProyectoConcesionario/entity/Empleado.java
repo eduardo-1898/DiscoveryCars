@@ -13,38 +13,49 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import lombok.Data;
 
-
+@Data
 @Entity
-@Table(name="Empleado")
+@Table(name = "Empleado")
 public class Empleado implements Serializable {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="Id")
+    @Column(name = "Id")
     private Long Id;
 
-    @Column(name="Cedula")
+    @Column(name = "Cedula")
     private String Cedula;
-    
-    @Column(name="NombreEmpleado")
+
+    @Column(name = "Nombre_Empleado")
     private String Nombre_Empleado;
-    
-    @Column(name="Apellido1")    
-    private String Apellido1;    
-    
-    @Column(name="NombreUsuario")
+
+    @Column(name = "Apellido1")
+    private String Apellido1;
+
+    @Column(name = "Nombre_Usuario")
     private String Nombre_Usuario;
-    
-    @Column(name="Password")
+
+    @Column(name = "Password")
     private String Password;
-    
-    @Column(name="Estado")
+
+    @Column(name = "Estado")
     private boolean Estado;
-    
+
     @ManyToOne
     @JoinColumn(name = "id_Role")
     private Roles Roles;
+
+    private int active;
+
+    public int getActive() {
+        return active;
+    }
+
+    public void setActive(int active) {
+        this.active = active;
+    }
 
     public Long getId() {
         return Id;
@@ -109,8 +120,5 @@ public class Empleado implements Serializable {
     public void setRoles(Roles Roles) {
         this.Roles = Roles;
     }
-    
-    
-    
-     
+
 }

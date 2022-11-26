@@ -41,9 +41,9 @@ public class EmpleadoServices implements IEmpleadoServices {
     }
 
     @Override
-    public Empleado findByNombre_Usuario(String Nombre_Usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    public Empleado findByNombreUsuario(String Nombre_Usuario) {
+        return _empleadoRepository.findByNombreUsuario(Nombre_Usuario);
 
+    }
 
 }

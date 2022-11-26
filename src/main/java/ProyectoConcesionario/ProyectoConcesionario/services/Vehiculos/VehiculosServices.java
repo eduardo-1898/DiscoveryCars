@@ -22,13 +22,13 @@ public class VehiculosServices implements IVehiculosServices{
     }
 
     @Override
-    public Vehiculos getVehiculosById(long id) {
-        return _vehiculosRepository.findById(id).orElse(null);
+    public Vehiculos getVehiculosById(String placa) {
+        return _vehiculosRepository.findById(placa).orElse(null);
     }
 
     @Override
-    public void deleteVehiculos(long id) {
-        _vehiculosRepository.deleteById(id);
+    public void deleteVehiculos(String placa) {
+        _vehiculosRepository.deleteById(placa);
     }
 
     @Override

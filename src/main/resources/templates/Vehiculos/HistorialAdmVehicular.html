@@ -13,10 +13,12 @@
                 <div class="row">
                     <div class="col-12" >
                         <div class="row mb-4 mt-4">
-                            <h3>Registro de vehiculos</h3>
+                            <h3 th:text="#{vehiculo.titulo}"></h3>
                         </div>
 
-                        <a th:href="@{/Vehiculos/Nuevo}"class="btn btn-success mb-4">
+
+                        <a th:href="@{/Vehiculos/Nuevo}" class="btn btn-success mb-4 text-white">
+
                             Nuevo <i class="fas fa-plus"></i>
                         </a>
 
@@ -24,19 +26,33 @@
                             <table id="table-vehicle" class="table table-striped table-hover ">
                                 <thead>
                                     <tr>
-                                        <th>Num. Placa</th>
-                                        <th>Marca</th>
-                                        <th>Modelo</th>
-                                        <th>Año</th>
-                                        <th>Color</th> 
-                                        <th>Precio</th> 
-                                        <th>Estado</th> 
-                                        <th>Modificar</th>
-                                        <th>Eliminar</th>                                      
+                                        <th th:text="#{mant.placa}"></th>
+                                        <th th:text="#{vehiculo.marca}"></th>
+                                        <th th:text="#{vehiculo.modelo}"></th>
+                                        <th th:text="#{vehiculo.anio}"></th>
+                                        <th th:text="#{vehiculo.color}"></th> 
+                                        <th th:text="#{vehiculo.estado}"></th>
+                                        <th th:text="#{vehiculo.precio}"></th> 
+                                        <th th:text="#{empleado.vehiculo.modificar}"></th>                                    
                                     </tr>
                                 </thead>
                                 <tbody>
-
+                                <th:block th:each="vehiculo : ${vehiculo}">
+                                    <tr>        
+                                        <td th:text="${vehiculo.getPlaca}"></td>
+                                        <td th:text="${vehiculo.getMarcas.getMarca}"></td>
+                                        <td th:text="${vehiculo.getModelos.getModelo}"></td>
+                                        <td th:text="${vehiculo.getAno}"></td>
+                                        <td th:text="${vehiculo.getColor}"></td>
+                                        <td th:text="${vehiculo.getEstado}? 'Disponible': 'No Disponible'"></td>  
+                                        <td th:text="${#numbers.formatDecimal(vehiculo.Precio_Compra, 1, 'COMMA', 0, 'POINT')}"></td> 
+                                        <td style="width: 9%;">
+                                            <a class="btn btn-primary text-white" th:href="@{/Vehiculos/Actualizar/{id}(id=${vehiculo.getPlaca})}">
+                                                <i class="fas fa-pencil-alt"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </th:block>
                                 </tbody>
                             </table>
                         </div>

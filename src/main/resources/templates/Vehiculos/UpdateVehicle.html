@@ -13,13 +13,13 @@
                     <div class="row">
                         <div class="col-12 col-lg-6 col-sm-12" >
                             <div class="row mb-4 mt-4">
-                                <h3 th:text="#{vehiculo.titulo2}"></h3>
+                                <h3 th:text="#{vehiculo.titulo3}"></h3>
                             </div>
                             <div class="form-section">
                                 <div class="row">
                                     <div class="col-12 col-md-6 col-sm-12 mb-2">
                                         <label th:text="#{mant.placa}"></label>
-                                        <input id="txtPlaca" th:field="*{placa}" type="text" class="form-control" required>
+                                        <input id="txtPlaca" th:field="*{placa}" type="text" class="form-control" required readonly>
                                     </div>
                                     <div class="col-12 col-md-6 col-sm-12 mb-2">
                                         <label th:text="#{vehiculo.marca}"></label>
@@ -52,11 +52,16 @@
                                         <label th:text="#{vehiculo.color}"></label>
                                         <input th:field="*{Color}" type="text" class="form-control" required>
                                     </div>
+                                    
+                                    <div class="col col-md-6 col-sm-12 mb-3 mx-3 mt-2 form-check form-switch">
+                                        <label class="form-check-label" th:text="#{vehiculo.estado}"></label>
+                                        <input th:field="*{Estado}" type="checkbox" class="form-check-input" required>
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col">
                                         <button type="submit" class="btn btn-success">
-                                            Agregar vehiculo <i class="fas fa-car"></i>
+                                            Modificar vehiculo <i class="fas fa-car"></i>
                                         </button>
                                     </div>
                                 </div>

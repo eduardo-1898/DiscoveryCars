@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -32,9 +33,10 @@ public class ClientesController {
         return "redirect:/Clientes/Index";
     }
     
-    @GetMapping("/Clientes/Actualizar")
-    public String ActualizarClientes(){
-        //Cambiar el path a la la vista que se necesite
+    @GetMapping("/Clientes/Actualizar/{id}")
+    public String ActualizarClientes(@PathVariable("id") long idCustomer, Model model){
+        Cliente DataCustomer = _clientesServices.getClientesById(idCustomer);
+        model.addAttribute("cliente", DataCustomer);
         return "Clientes/UpdateCustomers";
     }
     

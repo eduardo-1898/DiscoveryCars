@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head th:replace="/LandingPage::header"></head>
     <link th:href="@{/css/CreateSales.css}" rel="stylesheet" type="text/css">
@@ -9,79 +10,77 @@
                     <div class="row">
                         <div class="col-12 col-lg-6 col-sm-12" >
 
-                            <h4 class="mt-5 mb-4">Asignación de cliente</h4>
+                            <h3 class="mt-5 mb-4" th:text="#{ventas.titulo}"></h3>
                             <div class="row mb-3" id="findByCustomer">
                                 <div class="col col-lg-6">
-                                    <input type="text" class="form-control" placeholder="Cédula del cliente">                                        
+                                    <input id="txtDNISearch" type="text" class="form-control" placeholder="Cédula del cliente">                                        
                                 </div>
                                 <div class="col col-lg-3">
-                                    <button type="submit" formaction="buscar" class="btn btn-danger">
+                                    <button th:onclick="searchCustomer()" type="button"  formaction="buscar" class="btn btn-danger">
                                         Buscar 
                                         <i class="fas fa-search"></i>
                                     </button>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row form-section">
                                 <div class="col-12 col-md-6 col-sm-12 mb-2">
-                                    <label>Cedula</label>
-                                    <input type="text" class="form-control" readonly>
+                                    <label th:text="#{empleado.cliente.cedula}"></label>
+                                    <input id="txtDNI" type="text" class="form-control" readonly>
                                 </div>
                                 <div class="col-12 col-md-6 col-sm-12 mb-2">
-                                    <label>Cliente</label>
-                                    <input type="text" class="form-control" readonly>
+                                    <label th:text="#{ventas.cliente}"></label>
+                                    <input id="txtName" type="text" class="form-control" readonly>
                                 </div>
 
                                 <div class="col-12 mb-2">
-                                    <label>Correo</label>
-                                    <input type="text" class="form-control" readonly>
+                                    <label th:text="#{cliente.correo}"></label>
+                                    <input id="txtEmail" type="text" class="form-control" readonly>
                                 </div>
                             </div>
 
                             <div class="row mb-4 mt-4">
-                                <h3>Asignación de vehiculos</h3>
+                                <h3 th:text="#{ventas.titulo2}"></h3>
                             </div>
                             <div class="form-section">
                                 <div class="row mb-3" id="findByPlaca">
                                     <div class="col">
-                                        <input type="text" class="form-control" placeholder="Placa">                                        
+                                        <input id="txtPlacaSearch" type="text" class="form-control" placeholder="Placa">                                        
                                     </div>
                                     <div class="col">
-                                        <button type="submit" formaction="buscar" class="btn btn-danger">
+                                        <button th:onclick="searchVehicle()" type="button" formaction="buscar" class="btn btn-danger">
                                             Buscar <i class="fas fa-search"></i>
                                         </button>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-12 col-md-6 col-sm-12 mb-2">
-                                        <label>Placa</label>
-                                        <input type="text" class="form-control" readonly>
+                                        <label th:text="#{mant.placa}"></label>
+                                        <input id="txtPlaca" type="text" class="form-control" readonly>
                                     </div>
                                     <div class="col-12 col-md-6 col-sm-12 mb-2">
-                                        <label>Marca</label>
-                                        <input type="text" class="form-control" readonly>
+                                        <label th:text="#{vehiculo.marca}"></label>
+                                        <input id="txtMarca" type="text" class="form-control" readonly>
                                     </div>
                                     <div class="col-12 col-md-6 col-sm-12 mb-2">
-                                        <label>Modelo</label>
-                                        <input type="text" class="form-control" readonly>
+                                        <label th:text="#{vehiculo.modelo}"></label>
+                                        <input id="txtModelo" type="text" class="form-control" readonly>
                                     </div>
                                     <div class="col-12 col-md-3 col-sm-12 mb-2">
-                                        <label>Año</label>
-                                        <input type="text" class="form-control" readonly>
+                                        <label th:text="#{vehiculo.anio}">Año</label>
+                                        <input id="txtAño" type="number" class="form-control" readonly>
                                     </div>
                                     <div class="col col-md-3 col-sm-12 mb-2">
-                                        <label>Estado</label>
-                                        <input type="text" class="form-control" readonly>
+                                        <label th:text="#{vehiculo.estado}">Estado</label>
+                                        <input id="txtEstado" type="text" class="form-control" readonly>
                                     </div>
                                 </div>
-
-
                             </div>
 
-                            <div class="row">
+                            <div class="row form-section">
                                 <div class="col-12 col-md-6 col-sm-12 mb-2">
-                                    <label>Descuento aplicado</label>
-                                    <input type="number" min="0" class="form-control">
-                                    <p class="mt-3">Nota: En caso de no realizar descuento al vehículo dejar en 0 o bien el espacio en blanco</p>
+                                    <label th:text="#{ventas.descuento}"></label>
+                                    <input id="txtDescuento" type="number" min="0" class="form-control">
+                                    <p class="mt-3" th:text="#{ventas.nota}">Nota: En caso de no realizar descuento al vehículo dejar en 0 o bien el espacio en blanco</p>
                                 </div>
                             </div>
                             <div class="row">
@@ -94,7 +93,7 @@
                         </div>
                         <div class="col-12 col-lg-6 col-sm-12">
                             <div id="shopping-card" class="card-body mt-4">
-                                <h3 class="card-tittle text-center">Lista de vehículos</h3>
+                                <h3 class="card-tittle text-center" th:text="#{ventas.lista}"></h3>
                                 <div id="conteiner-sales">
                                     <div class="row">
                                         <div class="col-12 mt-2">
@@ -136,3 +135,6 @@
         <footer th:replace="/LandingPage::footer"></footer>
     </body>
 </html>
+
+
+<script th:src="@{/js/sales.js}" type="text/javascript"></script>

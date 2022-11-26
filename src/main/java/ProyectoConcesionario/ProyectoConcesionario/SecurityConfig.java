@@ -54,33 +54,58 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+
+        http.authorizeRequests().antMatchers("/**/*.js",
+                "/**/*.css",
+                "/**/*.jpg",
+                "/**/*.JPG").permitAll()
                 .antMatchers("/Home/Index",
-                        "/Login",
-                        "/Mantenimiento/HistorialMantenimiento",
-                        "/Mantenimiento/RegistroMantenimiento")
+                        "/Login/index",
+                        "/Login/SingUp",
+                        "/Mantenimiento/Index",
+                        "/Mantenimiento/save",
+                        "/Mantenimiento/Nuevo",
+                        "/Mantenimiento/Actualizar/{id}",
+                        "/Mantenimiento/delete/{id}")
                 .hasRole("Mantenimientos")
                 .antMatchers("/Home/Index",
-                        "/Login",
+                        "/Login/index",
+                        "/Login/SingUp",
+                        "/Clientes/Nuevo",
+                        "/Clientes/save",
+                        "/Clientes/Actualizar/{id}",
+                        "/Clientes/Index",
                         "/Vehiculos/Nuevo",
+                        "/Vehiculos/Actualizar/{id}",
+                        "/Vehiculos/save",
                         "/Vehiculos/Index")
                 .hasAnyRole("Ventas")
                 .antMatchers("/Home/Index",
-                        "/Login",
+                        "/Login/index",
+                        "/Login/SingUp",
                         "/Clientes/Nuevo",
+                        "/Clientes/save",
+                        "/Clientes/Actualizar/{id}",
                         "/Clientes/Index",
                         "/Empleados/Nuevo",
+                        "/Empleados/Actualizar/{id}",
                         "/Empleados/Index",
+                        "/Empleados/save",
                         "/Mantenimiento/Index",
+                        "/Mantenimiento/save",
                         "/Mantenimiento/Nuevo",
+                        "/Mantenimiento/Actualizar/{id}",
+                        "/Mantenimiento/delete/{id}",
                         "/Vehiculos/Nuevo",
+                        "/Vehiculos/Actualizar/{id}",
+                        "/Vehiculos/save",
                         "/Vehiculos/Index",
                         "/Ventas/Crear")
                 .hasAnyRole("Administrador")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/Login").permitAll()
+                .loginPage("/Login/index").permitAll()
                 .defaultSuccessUrl("/Home/Index", true);
 
     }

@@ -20,7 +20,7 @@ CREATE TABLE Roles(
 
 CREATE TABLE Departamento(
 	Id int not null primary key auto_increment,
-    NombreDepartamento varchar(150)
+    Nombre_Departamento varchar(150)
 );
 
 CREATE TABLE Cliente(
@@ -113,7 +113,7 @@ CREATE TABLE StockVehiculos(
     Estado_Vehiculo varchar(30) NOT NULL,
     id_Modelo int not null,
     id_Marca int not null,
-    cliente_Asociado int not null,
+    cliente_Asociado int,
     Fecha_Venta date,
 	CONSTRAINT FK_Stock_marca
     FOREIGN KEY(id_Marca)
@@ -123,16 +123,15 @@ CREATE TABLE StockVehiculos(
     REFERENCES Modelo(id)
 );
 
-
 DELIMITER $$
 CREATE TRIGGER tr_ActualizaVenta
 AFTER INSERT ON Venta FOR EACH ROW
 BEGIN
 	UPDATE StockVehiculos 
-	SET Ultima_modificacion = SYSDATE(), 
+	SET Ultima_modificacion = now(), 
 		Estado_Vehiculo = 'VENDIDO', 
 		cliente_Asociado = (select Id_Cliente FROM Encabezado WHERE Id_Factura = New.Id_Factura),
-		FechaV_enta = SYSDATE() 
+		Fecha_Venta = now() 
 		WHERE Placa = New.Placa;
 END;
 $$
@@ -141,7 +140,72 @@ DELIMITER $$
 CREATE TRIGGER tr_CreaCompra
 AFTER INSERT ON Vehiculos FOR EACH ROW
 BEGIN
-	INSERT INTO StockVehiculos(placa, UltimaModificacion, EstadoVehiculo, id_Modelo, id_Marca, FechaVenta)
-    VALUES(New.Placa, SYSDATE(), 'NUEVO', New.Id_Modelo, New.Id_Marca, SYSDATE());
+	INSERT INTO StockVehiculos(placa, Ultima_Modificacion, Estado_Vehiculo, id_Modelo, id_Marca, Fecha_Venta, cliente_asociado)
+    VALUES(New.Placa, now(), 'NUEVO', New.Id_Modelo, New.Id_Marca, now(), null);
 END;
 $$
+
+INSERT INTO Roles(Nombre_role, Fecha_Creacion)
+VALUES('Mantenimientos',now());
+INSERT INTO Roles(Nombre_role, Fecha_Creacion)
+VALUES('Ventas',now());
+INSERT INTO Roles(Nombre_role, Fecha_Creacion)
+VALUES('Administrador',now());
+
+
+INSERT INTO departamento(Nombre_Departamento)
+VALUES ('Taller Mecánico');
+INSERT INTO departamento(Nombre_Departamento)
+VALUES ('Enderezado y pintura');
+INSERT INTO departamento(Nombre_Departamento)
+VALUES ('Aceites y frenos');
+INSERT INTO departamento(Nombre_Departamento)
+VALUES ('Lavado y entrega');
+
+
+INSERT INTO Marca(Marca)
+VALUES('HONDA');
+INSERT INTO Marca(Marca)
+VALUES('Hyundai');
+INSERT INTO Marca(Marca)
+VALUES('Nissan');
+INSERT INTO Marca(Marca)
+VALUES('Renault');
+INSERT INTO Marca(Marca)
+VALUES('Suzuki');
+INSERT INTO Marca(Marca)
+VALUES('Toyota');
+
+INSERT INTO Modelo(Modelo)VALUES('Accord');
+INSERT INTO Modelo(Modelo)VALUES('Beat');
+INSERT INTO Modelo(Modelo)VALUES('City');
+INSERT INTO Modelo(Modelo)VALUES('Civic');
+INSERT INTO Modelo(Modelo)VALUES('CR-V');
+INSERT INTO Modelo(Modelo)VALUES('Element');
+INSERT INTO Modelo(Modelo)VALUES('Fit');
+INSERT INTO Modelo(Modelo)VALUES('Orthia');
+INSERT INTO Modelo(Modelo)VALUES('HR-V');
+INSERT INTO Modelo(Modelo)VALUES('Insight');
+INSERT INTO Modelo(Modelo)VALUES('CR-Z');
+INSERT INTO Modelo(Modelo)VALUES('HSV-010');
+INSERT INTO Modelo(Modelo)VALUES('Integra');
+INSERT INTO Modelo(Modelo)VALUES('Legend');
+INSERT INTO Modelo(Modelo)VALUES('Logo');
+INSERT INTO Modelo(Modelo)VALUES('Odyssey');
+INSERT INTO Modelo(Modelo)VALUES('Pilot');
+INSERT INTO Modelo(Modelo)VALUES('Ridgeline');
+INSERT INTO Modelo(Modelo)VALUES('WRV');
+INSERT INTO Modelo(Modelo)VALUES('Tucson');
+INSERT INTO Modelo(Modelo)VALUES('Accent');
+INSERT INTO Modelo(Modelo)VALUES('Avante');
+INSERT INTO Modelo(Modelo)VALUES('Atos');
+INSERT INTO Modelo(Modelo)VALUES('Aslan');
+INSERT INTO Modelo(Modelo)VALUES('Elantra');
+INSERT INTO Modelo(Modelo)VALUES('I10');
+INSERT INTO Modelo(Modelo)VALUES('I20');
+INSERT INTO Modelo(Modelo)VALUES('I30');
+INSERT INTO Modelo(Modelo)VALUES('I40');
+INSERT INTO Modelo(Modelo)VALUES('IONIQ');
+INSERT INTO Modelo(Modelo)VALUES('Santa Fe');
+INSERT INTO Modelo(Modelo)VALUES('Veloster');
+

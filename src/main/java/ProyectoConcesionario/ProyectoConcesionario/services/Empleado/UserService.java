@@ -16,7 +16,7 @@ public class UserService implements UserDetailsService{
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Empleado empleado = this.empleadoService.findByNombre_Usuario(username);
+        Empleado empleado = this.empleadoService.findByNombreUsuario(username);
         UserPrincipal userPrincipal = new UserPrincipal(empleado);
         return userPrincipal;       
     }

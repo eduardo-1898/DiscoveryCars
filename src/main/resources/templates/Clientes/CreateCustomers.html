@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaft.com"
       xmlns:sec="http://www.thymeleaft.org/extras/spring-security">
 
@@ -13,36 +14,36 @@
                     <div class="row">
                         <div class="col-12 col-lg-6 col-sm-12" >
                             <div class="row mb-4 mt-4">
-                                <h3>Creación de clientes</h3>
+                                <h3 th:text="#{cliente.titulo}"></h3>
                             </div>
                             <div class="form-section">
                                 <div class="row">
                                     <div class="col-12 col-md-6 col-sm-12 mb-2">
-                                        <label>Cedula</label>
-                                        <input th:field="*{Cedula}" type="text" placeholder="Formato 111111111" class="form-control" required>
+                                        <label th:text="#{empleado.cliente.cedula}"></label>
+                                        <input th:field="*{Cedula}" type="text" placeholder="111111111" class="form-control" required>
                                     </div>
                                     <div class="col-12 col-md-6 col-sm-12 mb-2">
-                                        <label>Nombre</label>
+                                        <label th:text="#{empleado.cliente.nombre}"></label>
                                         <input th:field="*{NombreCliente}" type="text" class="form-control" required>
                                     </div>
                                     <div class="col-12 col-md-6 col-sm-12 mb-2">
-                                        <label>Apellido 1</label>
+                                        <label th:text="#{empleado.cliente.apellido}"></label>
                                         <input th:field="*{Apellido1}" type="text" class="form-control" required>
                                     </div>
                                     <div class="col-12 col-md-6 col-sm-12 mb-2">
-                                        <label>Apellido 2</label>
+                                        <label th:text="#{cliente.apellido2}"></label>
                                         <input th:field="*{Apellido2}" type="text" class="form-control" required>
                                     </div>
                                     <div class="col col-md-6 col-sm-12 mb-2">
-                                        <label>Correo</label>
+                                        <label th:text="#{cliente.correo}"></label>
                                         <input th:field="*{Correo}" id="email" type="email" class="form-control" required>
                                     </div>
                                     <div class="col col-md-6 col-sm-12 mb-2">
-                                        <label>Telefono</label>
-                                        <input th:field="*{telefono}" type="number" placeholder="Formato 88888888" class="form-control" required>
+                                        <label th:text="#{cliente.telefono}"></label>
+                                        <input th:field="*{telefono}" type="number" placeholder="88888888" class="form-control" required>
                                     </div>
                                     <div class="col col-md-12 col-sm-12 mb-2">
-                                        <label>Dirección</label>
+                                        <label th:text="#{cliente.direccion}"></label>
                                         <textarea th:field="*{Direccion}" id="direccion" maxlength="250" type="text" class="form-control" required>
                                         </textarea>
                                     </div>

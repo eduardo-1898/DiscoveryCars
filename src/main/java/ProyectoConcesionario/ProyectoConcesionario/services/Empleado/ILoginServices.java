@@ -5,13 +5,9 @@
 package ProyectoConcesionario.ProyectoConcesionario.services.Empleado;
 
 import ProyectoConcesionario.ProyectoConcesionario.entity.Empleado;
-import java.util.List;
 
 
-public interface IEmpleadoServices {
-    public List<Empleado> getEmpleados();
-    public Empleado getEmpleadosById(long id);
-    public void deleteEmpleados(long id);
-    public void saveEmpleados(Empleado empleados);
-    public Empleado findByNombreUsuario (String Nombre_Usuario);
+
+public interface ILoginServices {
+    public Empleado validateAccess(String user, String password);
 }

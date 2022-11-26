@@ -1,9 +1,6 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
-<html>
+<html xmlns:th="http://www.thymeleaft.com"
+      xmlns:sec="http://www.thymeleaft.org/extras/spring-security">
     <head>
         <title>DiscoveryCars | Login</title>
         <meta charset="UTF-8">
@@ -11,28 +8,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-        <link href="css/loginStyle.css" rel="stylesheet" type="text/css"/>
+        <link href="../static/css/loginStyle.css" th:href="@{/css/loginStyle.css}" rel="stylesheet" type="text/css"/>
     </head>
+    
     <body>
         <main class="main-container">
-
             <img class="form-logo" src="images/logo.JPG" alt=""/>
-            <form name="f" action="@{/login}" method="post">
-                <fieldset>
-                    <div th:if="${param.error}" class="alert alert-danger">
-                        Nombre de usuario o contraseña inválidos.
-                    </div>
-                    <div th:if="${param.logout}" class="alert alert-success">
-                        Se ha cerrado la sesión.
-                    </div>
-                    
-                    <input type="text" id="id" name="name" value="" placeholder="Usuario">
-                    <input  type="password" id="id" name="name" value="" placeholder="Contraseña">
-                    <a th:href="@{/Home/Index}" class="text-center" id="id" name="name">
-                        Login
-                    </a>
-
-                </fieldset>
+            <form th:object = "${empleados}"                          
+                  th:action="@{/Login/SingUp}"                          
+                  method="POST">
+                <input th:field="*{Nombre_Usuario}" type="text" placeholder="Usuario">
+                <input th:field="*{Password}" type="password" placeholder="Contraseña">
+                <button type="submit">
+                    Login
+                </button>
             </form>
 
         </main>

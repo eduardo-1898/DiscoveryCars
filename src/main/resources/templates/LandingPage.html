@@ -2,7 +2,7 @@
 
 <html xmlns:th="http://www.thymeleaft.com"
       xmlns:sec="http://www.thymeleaft.org/extras/spring-security">
-    
+
     <head th:fragment="header">
         <title>DiscoveryCars</title>
         <meta charset="UTF-8">
@@ -18,8 +18,9 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
         <link th:href="@{/css/LandingPage.css}" rel="stylesheet" type="text/css"/>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     </head>
-    
+
     <body>
 
         <header th:fragment="navbar" class="header-container">
@@ -29,17 +30,17 @@
             <nav class="nav-container">
                 <div class="nav-container-link">
                     <ul>
-                        <li><a th:href="@{/Empleados/Index}">Empleados</a></li>
-                        <li><a th:href="@{/Mantenimiento/Index}">Mantenimientos</a></li>
-                        <li><a th:href="@{/Clientes/Index}">Clientes</a></li>
-                        <li><a th:href="@{/Ventas/Crear}">Ventas</a></li>
-                        <li><a th:href="@{/Vehiculos/Index}">Vehiculos</a></li>
+                        <li sec:authorize="hasRole('Administrador')"><a th:href="@{/Empleados/Index}" th:text="#{landing.empleados}"></a></li>
+                        <li sec:authorize="hasAnyRole ('Administrador', 'Mantenimientos')"><a th:href="@{/Mantenimiento/Index}" th:text="#{landing.mantenimiento}"></a></li>
+                        <li sec:authorize="hasAnyRole ('Administrador', 'Ventas')"><a th:href="@{/Clientes/Index}" th:text="#{landing.clientes}"></a></li>
+                        <li sec:authorize="hasAnyRole ('Administrador', 'Ventas')"><a th:href="@{/Ventas/Crear}" th:text="#{landing.ventas}"></a></li>
+                        <li sec:authorize="hasAnyRole ('Administrador', 'Ventas')"><a th:href="@{/Vehiculos/Index}" th:text="#{landing.vehiculos}"></a></li>
                     </ul>
                 </div>
                 <div class="subnav-container-link">
                     <ul>
-                        <li>
-                            <a th:href="@{/Login}" class="text-white">
+                        <li sec:authorize="isAuthenticated()">
+                            <a th:href="@{/Login/index}" class="text-white">
                                 <i class="fas fa-cogs">
                                 </i>
                             </a>
@@ -48,7 +49,7 @@
                 </div>
             </nav>
             <div class="header-gray">
-                
+
             </div>
         </header>
 
@@ -56,7 +57,7 @@
             <div class="main-container">
                 <div class="text-main">
                     <p class="text-title1">Discovery</p>
-                    <p>Imagina lo inimaginable</p>
+                    <p th:text="#{landing.titulo}"></p>
                 </div>
                 <div class="image-main">
                     <p class="text-title2">Cars</p>
@@ -84,34 +85,40 @@
                 </div>
             </div>
         </main>
-        
+
         <footer th:fragment="footer" class="footer-container mt-3">
             <div class="footer-line"></div>
             <div class="footer-link-container">
 
                 <ul>
-                    <li><a id="style-1" href="url">Mantenimiento</a></li>
-                    <li><a id="style-1" href="url">Desarrolladores</a></li>
-                    <li><a id="style-1" href="url">Sucursales</a></li>
+                    <li><a id="style-1" href="url" th:text="#{landing.mantenimiento}"></a></li>
+                    <li><a id="style-1" href="url" th:text="#{landing.desarrolladores}"></a></li>
+                    <li><a id="style-1" href="url" th:text="#{landing.sucursales}"></a></li>
                 </ul>
                 <ul>
-                    <li><a id="style-1" href="url">Modelos</a></li>
-                    <li><a id="style-1" href="url">Ventas</a></li>
-                    <li><a id="style-1" href="url">Agregar Vehículos</a></li>
+                    <li><a id="style-1" href="url" th:text="#{landing.modelos}"></a></li>
+                    <li><a id="style-1" href="url" th:text="#{landing.ventas}"></a></li>
+                    <li><a id="style-1" href="url" th:text="#{landing.add}"></a></li>
                 </ul>
                 <ul>
-                    <li><a id="style-1" href="url">Contactos</a></li>
-                    <li><a id="style-1" href="url">Términos y Condiciones</a></li>
-                    <li><a id="style-1" href="url">Licencias</a></li>
+                    <li><a id="style-1" href="url" th:text="#{landing.contactos}"></a></li>
+                    <li><a id="style-1" href="url" th:text="#{landing.condiciones}"></a></li>
+                    <li><a id="style-1" href="url" th:text="#{landing.licencias}"></a></li>
                 </ul>
                 <ul>
                     <li><a id="style-1" href="url">Facebook</a></li>
                     <li><a id="style-1" href="url">Twitter</a></li>
                     <li><a id="style-1" href="url">Instagram</a></li>
                 </ul>
-
+                <div class="container-lang">
+                    <a class="lang" th:with="urlBuilder=${T(org.springframework.web.servlet.support.ServletUriComponentsBuilder).fromCurrentRequest()}"
+                       th:href="${urlBuilder.replaceQueryParam('lang','es').toUriString()}">Español</a>
+                    <a class="lang" th:with="urlBuilder=${T(org.springframework.web.servlet.support.ServletUriComponentsBuilder).fromCurrentRequest()}"
+                       th:href="${urlBuilder.replaceQueryParam('lang','en').toUriString()}">English</a>
+                </div>
             </div>
+
         </footer>
-        
+
     </body>
 </html>

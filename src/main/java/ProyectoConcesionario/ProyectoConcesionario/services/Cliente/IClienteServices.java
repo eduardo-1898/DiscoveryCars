@@ -12,4 +12,5 @@ public interface IClienteServices {
     public Cliente getClientesById(long id);
     public void deleteClientes(long id);
     public void saveClientes(Cliente clientes);
+    public Cliente getClienteByDNI(String cedula);
 }

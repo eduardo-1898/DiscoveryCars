@@ -75,7 +75,7 @@ a{
     text-decoration: none;
 }
 
-.main-container a{
+.main-container button{
     padding: 13px 55px;
     border-radius: 100px;
     outline: none;
@@ -85,7 +85,7 @@ a{
     font-size: 1.6rem;
 }
 
-.main-container a:hover{
+.main-container button:hover{
     padding: 13px 55px;
     border-radius: 100px;
     outline: none;

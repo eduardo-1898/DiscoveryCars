@@ -35,5 +35,9 @@ public class ClienteServices implements IClienteServices{
     public void saveClientes(Cliente clientes) {
         _clienteRepository.save(clientes);
     }
-    
+
+    @Override
+    public Cliente getClienteByDNI(String cedula) {
+        return _clienteRepository.getCustomerByDNI(cedula);
+    }    
 }

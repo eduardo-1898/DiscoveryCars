@@ -4,7 +4,7 @@
  */
 package ProyectoConcesionario.ProyectoConcesionario.repository;
 
-import ProyectoConcesionario.ProyectoConcesionario.entity.Cliente;
+import ProyectoConcesionario.ProyectoConcesionario.entity.Empleado;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -12,8 +12,11 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface ClienteRepository extends JpaRepository<Cliente, Long>{
+public interface LoginRepository extends JpaRepository<Empleado, Long>{
     
-    @Query("Select o FROM Cliente o WHERE o.Cedula = :cedula")
-    public Cliente getCustomerByDNI(@Param("cedula") String cedula);    
+    @Query("SELECT o FROM Empleado o WHERE o.Nombre_Usuario = :Nombre_Usuario and o.Password = :Password")
+    public Empleado getDataAccess(
+            @Param("Nombre_Usuario") String Nombre_Usuario, 
+            @Param("Password") String Password);
+    
 }

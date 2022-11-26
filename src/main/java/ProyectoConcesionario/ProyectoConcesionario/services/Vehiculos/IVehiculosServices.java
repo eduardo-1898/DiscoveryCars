@@ -13,7 +13,7 @@ import java.util.List;
  */
 public interface IVehiculosServices {
     public List<Vehiculos> getVehiculos();
-    public Vehiculos getVehiculosById(long id);
-    public void deleteVehiculos(long id);
+    public Vehiculos getVehiculosById(String placa);
+    public void deleteVehiculos(String placa);
     public void saveVehiculos(Vehiculos vehiculos);
 }
