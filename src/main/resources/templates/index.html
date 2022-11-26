@@ -17,12 +17,22 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <main class="main-container">
 
             <img class="form-logo" src="images/logo.JPG" alt=""/>
-            <form action="action">
-                <input type="text" id="id" name="name" value="" placeholder="Usuario">
-                <input  type="password" id="id" name="name" value="" placeholder="Contraseña">
-                <a th:href="@{/Home/Index}" class="text-center" id="id" name="name">
-                    Login
-                </a>
+            <form name="f" action="@{/login}" method="post">
+                <fieldset>
+                    <div th:if="${param.error}" class="alert alert-danger">
+                        Nombre de usuario o contraseña inválidos.
+                    </div>
+                    <div th:if="${param.logout}" class="alert alert-success">
+                        Se ha cerrado la sesión.
+                    </div>
+                    
+                    <input type="text" id="id" name="name" value="" placeholder="Usuario">
+                    <input  type="password" id="id" name="name" value="" placeholder="Contraseña">
+                    <a th:href="@{/Home/Index}" class="text-center" id="id" name="name">
+                        Login
+                    </a>
+
+                </fieldset>
             </form>
 
         </main>

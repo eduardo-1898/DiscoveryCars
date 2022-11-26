@@ -13,4 +13,5 @@ public interface IEmpleadoServices {
     public Empleado getEmpleadosById(long id);
     public void deleteEmpleados(long id);
     public void saveEmpleados(Empleado empleados);
+    public Empleado findByNombre_Usuario (String Nombre_Usuario);
 }
