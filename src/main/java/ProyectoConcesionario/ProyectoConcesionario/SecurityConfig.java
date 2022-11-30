@@ -65,7 +65,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/Mantenimiento/Nuevo",
                         "/Mantenimiento/Actualizar/{id}",
                         "/Mantenimiento/delete/{id}")
-                .hasRole("Mantenimientos")
+                .hasAnyRole("Mantenimientos")
                 .antMatchers("/Home/Index",
                         "/Login/index",
                         "/Login/SingUp",

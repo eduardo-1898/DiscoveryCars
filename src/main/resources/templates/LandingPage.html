@@ -30,11 +30,11 @@
             <nav class="nav-container">
                 <div class="nav-container-link">
                     <ul>
-                        <li sec:authorize="hasRole('Administrador')"><a th:href="@{/Empleados/Index}" th:text="#{landing.empleados}"></a></li>
-                        <li sec:authorize="hasAnyRole ('Administrador', 'Mantenimientos')"><a th:href="@{/Mantenimiento/Index}" th:text="#{landing.mantenimiento}"></a></li>
-                        <li sec:authorize="hasAnyRole ('Administrador', 'Ventas')"><a th:href="@{/Clientes/Index}" th:text="#{landing.clientes}"></a></li>
-                        <li sec:authorize="hasAnyRole ('Administrador', 'Ventas')"><a th:href="@{/Ventas/Crear}" th:text="#{landing.ventas}"></a></li>
-                        <li sec:authorize="hasAnyRole ('Administrador', 'Ventas')"><a th:href="@{/Vehiculos/Index}" th:text="#{landing.vehiculos}"></a></li>
+                        <li sec:authorize="hasAnyRole('ROLE_Administrador')"><a th:href="@{/Empleados/Index}" th:text="#{landing.empleados}"></a></li>
+                        <li sec:authorize="hasAnyRole('ROLE_Administrador', 'ROLE_Mantenimientos')"><a th:href="@{/Mantenimiento/Index}" th:text="#{landing.mantenimiento}"></a></li>
+                        <li sec:authorize="hasAnyRole('ROLE_Administrador', 'ROLE_Ventas')"><a th:href="@{/Clientes/Index}" th:text="#{landing.clientes}"></a></li>
+                        <li sec:authorize="hasAnyRole('ROLE_Administrador', 'ROLE_Ventas')"><a th:href="@{/Ventas/Crear}" th:text="#{landing.ventas}"></a></li>
+                        <li sec:authorize="hasAnyRole('ROLE_Administrador', 'ROLE_Ventas')"><a th:href="@{/Vehiculos/Index}" th:text="#{landing.vehiculos}"></a></li>
                     </ul>
                 </div>
                 <div class="subnav-container-link">

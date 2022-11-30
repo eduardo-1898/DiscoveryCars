@@ -22,8 +22,12 @@ public class UserPrincipal implements UserDetails {
         GrantedAuthority authority = new SimpleGrantedAuthority(this.empleado.getRoles()
                 .getNombre_Role());
         authorities.add(authority);
+        GrantedAuthority authorityroles = new SimpleGrantedAuthority("ROLE_"+this.empleado.getRoles()
+                .getNombre_Role());
+        authorities.add(authorityroles);
         return authorities;
     }
+    
 
     @Override
     public String getPassword() {
