@@ -23,10 +23,10 @@ public class LoginController {
     @Autowired
     private ILoginServices _loginServices;
 
-    @GetMapping("/Login/index")
-    public String CrearClientes(Model model) {
-        model.addAttribute("empleados", new Empleado());
-        return "index";
+    @GetMapping("/login")
+    public String CrearClientes() {
+//        model.addAttribute("empleados", new Empleado());
+        return "/login";
     }
 
     @PostMapping("/Login/SingUp")

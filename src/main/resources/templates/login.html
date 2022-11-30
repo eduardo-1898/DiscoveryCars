@@ -10,15 +10,15 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
         <link href="../static/css/loginStyle.css" th:href="@{/css/loginStyle.css}" rel="stylesheet" type="text/css"/>
     </head>
-    
+
     <body>
         <main class="main-container">
             <img class="form-logo" src="images/logo.JPG" alt=""/>
-            <form th:object = "${empleados}"                          
-                  th:action="@{/Login/SingUp}"                          
-                  method="POST">
-                <input th:field="*{Nombre_Usuario}" type="text" placeholder="Usuario">
-                <input th:field="*{Password}" type="password" placeholder="Contraseña">
+            <form                          
+                th:action="@{/login}"                          
+                method="post">
+                <input id="username" name="username" type="text" placeholder="Usuario">
+                <input id="password" name="password" type="password" placeholder="Contraseña">
                 <button type="submit">
                     Login
                 </button>

@@ -19,7 +19,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserService userDetailsService;
 
-    //todavia hay que setear las claves encriptadas en la BD
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -54,7 +53,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
         http.authorizeRequests().antMatchers("/**/*.js",
                 "/**/*.css",
                 "/**/*.jpg",
@@ -105,7 +103,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/Login/index").permitAll()
+                .loginPage("/login").permitAll()
                 .defaultSuccessUrl("/Home/Index", true);
 
     }
