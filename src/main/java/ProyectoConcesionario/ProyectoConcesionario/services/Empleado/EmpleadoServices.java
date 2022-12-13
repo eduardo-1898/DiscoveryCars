@@ -15,11 +15,11 @@ import org.springframework.stereotype.Service;
  * @author Eduardo JA
  */
 @Service
-public class EmpleadoServices implements IEmpleadoServices{
+public class EmpleadoServices implements IEmpleadoServices {
 
     @Autowired
     private EmpleadoRepository _empleadoRepository;
-    
+
     @Override
     public List<Empleado> getEmpleados() {
         return (List<Empleado>) _empleadoRepository.findAll();
@@ -39,5 +39,11 @@ public class EmpleadoServices implements IEmpleadoServices{
     public void saveEmpleados(Empleado empleados) {
         _empleadoRepository.save(empleados);
     }
-    
+
+    @Override
+    public Empleado findByNombreUsuario(String Nombre_Usuario) {
+        return _empleadoRepository.findByNombreUsuario(Nombre_Usuario);
+
+    }
+
 }

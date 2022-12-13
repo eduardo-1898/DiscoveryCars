@@ -14,10 +14,11 @@
                     <div class="row">
                         <div class="col-12 col-lg-6 col-sm 12">
                             <div class="row mb-4 mt-4">
-                                <h3 th:text="#{empleado.registro}"></h3>
+                                <h3 th:text="#{empleado.actualizar}"></h3>
                             </div>
                             <div class="form-section">
                                 <div class="row">
+                                    <input th:field="*{Id}" style="visibility: hidden; display: none;" type="text" required>
                                     <div class="col-12 col-md-6 col-sm-12 mb-2">
                                         <label th:text="#{empleado.cliente.nombre}"></label>
                                         <input th:field="*{Nombre_Empleado}" class="form-control" type="text" required>
@@ -28,7 +29,7 @@
                                     </div>
                                     <div class="col-12 col-md-6 col-sm-12 mb-2">
                                         <label th:text="#{empleado.cliente.cedula}"></label>
-                                        <input th:field="*{Cedula}" class="form-control" type="text" th:placeholder="#{empleado.cliente.formatoCedula}" required>
+                                        <input th:field="*{Cedula}" class="form-control" type="text" placeholder="Formato 111111111" required>
                                     </div>
                                     <div class="col-12 col-md-6 col-sm-12 mb-2">
                                         <label th:text="#{empleado.rol}"></label>
@@ -40,17 +41,15 @@
                                     </div>
                                     <div class="col-12 col-md-6 col-sm-12 mb-2">
                                         <label th:text="#{empleado.user}"></label>
-                                        <input th:field="*{Nombre_Usuario}" class="form-control" type="text"required>
+                                        <input th:field="*{Nombre_Usuario}" class="form-control" type="text" required readonly>
                                     </div>
-                                    <div class="col-12 col-md-6 col-sm-12 mb-2">
-                                        <div class="input-box">
-                                            <label th:text="#{login.password}"></label>
-                                            <input th:field="*{Password}" type="password" class="form-control" required>
-                                        </div>
+                                    <div class="col-12 col-md-6 col-sm-12 mb-2" style="visibility: hidden;">
+                                        <label th:text="#{landing.password}"></label>
+                                        <input th:field="*{Password}" type="text" class="form-control" required readonly>
                                     </div>
                                     <div class="col-12 col-lg-4 col-sm-8 mt-3">
                                         <button class="btn btn-success" type="submit">
-                                            Agregar empleado <i class="fas fa-plus"></i>
+                                            Modificar empleado <i class="fas fa-plus"></i>
                                         </button>
                                     </div>
                                 </div>

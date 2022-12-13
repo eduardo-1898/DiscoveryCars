@@ -19,13 +19,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  *
  * @author Eduardo JA
  */
 @Controller
+@RequestMapping("/Vehiculos/")
 public class VehiculosController {
     
     @Autowired
@@ -38,7 +41,7 @@ public class VehiculosController {
     private IModeloServices _modeloServices;
     
     
-    @GetMapping("/Vehiculos/Nuevo")
+    @GetMapping("Nuevo")
     public String CrearVehiculo(Model model){
         
         List<Modelo> listModelos = _modeloServices.getModelos();
@@ -62,15 +65,39 @@ public class VehiculosController {
         return "Vehiculos/AdmVehicular";
     }
     
-    @GetMapping("/Vehiculos/Index")
-    public String IndexVehiculo(){
+    @GetMapping("Actualizar/{id}")
+    public String ActualizarClientes(@PathVariable("id") String placa, Model model){
+
+        List<Modelo> listModelos = _modeloServices.getModelos();
+        Collections.sort(listModelos, (a, b)->{
+            return a.getModelo().compareTo(b.getModelo());
+        });
+        
+        List<Marca> listMarcas = _marcaServices.getMarcas();
+        Collections.sort(listMarcas, (a, b)->{
+            return a.getMarca().compareTo(b.getMarca());
+        });
+        
+        Vehiculos DataVehicle = _vehiculoServices.getVehiculosById(placa);
+        
+        model.addAttribute("modelo", listModelos);
+        model.addAttribute("marca", listMarcas);
+        model.addAttribute("vehiculo", DataVehicle);
+        
+        return "Vehiculos/UpdateVehicle";
+    }
+    
+    @GetMapping("Index")
+    public String IndexVehiculo(Model model){
+        List<Vehiculos> getVehicles = _vehiculoServices.getVehiculos();
+        model.addAttribute("vehiculo", getVehicles);
         return "Vehiculos/HistorialAdmVehicular";
     }
     
-    @PostMapping("/Vehiculos/save")
+    @PostMapping("save")
     public String SaveVehiculos(@ModelAttribute Vehiculos vehiculos){
         _vehiculoServices.saveVehiculos(vehiculos);
-        return "redirect:Vehiculos/Index";
+        return "redirect:/Vehiculos/Index";
     }
     
     //Metodo privado para obtener el año actual del servidor.

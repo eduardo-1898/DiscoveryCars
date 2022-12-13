@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-12" >
                     <div class="row mb-4 mt-4">
-                        <h3>Historial de mantenimientos</h3>
+                        <h3 th:text="#{mant.historial}"></h3>
                     </div>
                     <a th:href="@{/Mantenimiento/Nuevo}" class="btn btn-success mb-4 text-white">
                         Nuevo <i class="fas fa-plus"></i>
@@ -19,17 +19,18 @@
                         <table id="table-mantenimiento" class="table table-striped table-hover">
                             <thead>
                                 <tr>
-                                    <th>N° Registro</th>
-                                    <th>Fecha</th>
-                                    <th>N° Placa</th>
-                                    <th>Detalle</th>
-                                    <th>Registrado Por</th>
-                                    <th>Departamento</th>   
-                                    <th>Eliminar</th>                                   
+                                    <th th:text="#{mant.registro}"></th>
+                                    <th th:text="#{mant.fecha}"> </th>
+                                    <th th:text="#{mant.placa}"></th>
+                                    <th th:text="#{mant.detalle}"></th>
+                                    <th th:text="#{mant.usuarioRegistro}"></th>
+                                    <th th:text="#{mant.departamento}"></th>   
+                                    <th th:text="#{mant.editar}"></th>
+                                    <th th:text="#{mant.eliminar}"></th>
                                 </tr>
                             </thead>
                             <tbody>
-                            <th:block th:each="mantenimiento : ${mantenimiento}">
+                            <th:block th:each="mantenimiento : ${mantenimientos}">
                                 <tr>        
                                     <td th:text="${mantenimiento.getId}"></td>
                                     <td th:text="${mantenimiento.getFecha_Ingreso}"></td>
@@ -38,12 +39,14 @@
                                     <td th:text="${mantenimiento.getEmpleados.getNombre_Empleado}"></td>
                                     <td th:text="${mantenimiento.getDepartamentos.getNombreDepartamento}"></td>       
                                     <td style="width: 9%;">
-                                        <a class="btn btn-primary" th:href="@{/Mantenimiento/edit/{id}(id=${mantenimiento.getId})}">
+                                        <a class="btn btn-primary text-white" th:href="@{/Mantenimiento/Actualizar/{id}(id=${mantenimiento.getId})}">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
                                     </td>
-                                    <td>
-                                        <a th:href="@{Mantenimiento/delete/{id}(id=${mantenimiento.getId})}">Eliminar</a>
+                                    <td style="width: 9%;">
+                                        <a class="btn btn-danger text-white" th:href="@{/Mantenimiento/delete/{id}(id=${mantenimiento.getId})}">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
                                     </td>
                                 </tr>
                             </th:block>

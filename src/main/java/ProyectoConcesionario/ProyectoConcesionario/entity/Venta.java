@@ -10,8 +10,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -26,12 +24,11 @@ public class Venta implements Serializable {
     @Column(name="Placa")
     private String Placa;
         
-    @Column(name="PrecioVenta")
-    private int Precio_Venta;
+    @Column(name="Precio_Venta")
+    private Long Precio_Venta;
     
-    @ManyToOne
-    @JoinColumn(name = "Id_Factura")
-    private Encabezado Encabezados;
+    @Column(name="Factura")
+    private Long Id_Factura;
 
     public Long getId() {
         return Id;
@@ -49,20 +46,20 @@ public class Venta implements Serializable {
         this.Placa = Placa;
     }
 
-    public int getPrecio_Venta() {
+    public Long getPrecio_Venta() {
         return Precio_Venta;
     }
 
-    public void setPrecio_Venta(int Precio_Venta) {
+    public void setPrecio_Venta(Long Precio_Venta) {
         this.Precio_Venta = Precio_Venta;
     }
 
-    public Encabezado getEncabezados() {
-        return Encabezados;
+    public Long getId_Factura() {
+        return Id_Factura;
     }
 
-    public void setEncabezados(Encabezado Encabezados) {
-        this.Encabezados = Encabezados;
+    public void setId_Factura(Long Id_Factura) {
+        this.Id_Factura = Id_Factura;
     }
 
     

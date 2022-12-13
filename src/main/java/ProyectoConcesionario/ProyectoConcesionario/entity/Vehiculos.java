@@ -75,7 +75,7 @@ public class Vehiculos implements Serializable {
         this.Precio_Compra = Precio_Compra;
     }
 
-    public boolean isEstado() {
+    public boolean getEstado() {
         return Estado;
     }
 

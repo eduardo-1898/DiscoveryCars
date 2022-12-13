@@ -12,33 +12,38 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+
+@RequestMapping("/Clientes/")
 public class ClientesController {
     
     @Autowired
     private IClienteServices _clientesServices;
     
-    @GetMapping("/Clientes/Nuevo")
+    @GetMapping("Nuevo")
     public String CrearClientes(Model model){
         model.addAttribute("cliente", new Cliente());
         return "Clientes/CreateCustomers";
     }
     
-    @PostMapping("/Clientes/save")
+    @PostMapping("save")
     public String saveCliente(@ModelAttribute Cliente clientes){
         _clientesServices.saveClientes(clientes);
         return "redirect:/Clientes/Index";
     }
     
-    @GetMapping("/Clientes/Actualizar")
-    public String ActualizarClientes(){
-        //Cambiar el path a la la vista que se necesite
+    @GetMapping("Actualizar/{id}")
+    public String ActualizarClientes(@PathVariable("id") long idCustomer, Model model){
+        Cliente DataCustomer = _clientesServices.getClientesById(idCustomer);
+        model.addAttribute("cliente", DataCustomer);
         return "Clientes/UpdateCustomers";
     }
     
-    @GetMapping("/Clientes/Index")
+    @GetMapping("Index")
     public String IndexClientes(Model model){
         List<Cliente> listCustomers = _clientesServices.getClientes();
         model.addAttribute("clientes", listCustomers);

@@ -15,13 +15,14 @@
                     <div class="row">
                         <div class="col-12 col-lg-6 col-sm-12" >
                             <div class="row mb-4 mt-4">
-                                <h3 th:text="#{mant.nuevo}"></h3>
+                                <h3 th:text="#{mant.update}"></h3>
                             </div>
                             <div class="form-section">
+                                <input th:field="*{Id}" type="text" class="form-control" style="visibility: hidden; display: none">
                                 <div class="row">
                                     <div class="col-12 col-md-6 col-sm-12 mb-2">
                                         <label th:text="#{mant.placa}"></label>
-                                        <input id="txtPlaca" th:field="*{Placa}" type="text" class="form-control" required>
+                                        <input id="txtPlaca" th:field="*{Placa}" type="text" class="form-control" required readonly>
                                     </div>
                                     <div class="col-12 col-md-6 col-sm-12 mb-2">
                                         <label th:text="#{mant.departamento}"></label>
@@ -32,7 +33,7 @@
                                         </select>
                                     </div>
                                     <div class="col-12 col-md-6 col-sm-12 mb-2">
-                                        <label th:text="#{mant.empleado}"></label>
+                                        <label th:text="#{mant.emoleado}"></label>
                                         <select th:field="*{Empleados}" class="form-select">
                                             <option th:each="x:${empleado}"                                            
                                                     th:value="${x.Id}"                                            
@@ -54,7 +55,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <button type="submit" class="btn btn-success">
-                                            Agregar mantenimiento <i class="fas fa-car-crash"></i>
+                                            Actualizar mantenimiento <i class="fas fa-car-crash"></i>
                                         </button>
                                     </div>
                                 </div>
