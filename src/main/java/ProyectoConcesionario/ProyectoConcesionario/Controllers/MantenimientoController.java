@@ -86,12 +86,7 @@ public class MantenimientoController {
         return "Mantenimiento/UpdateMaintenance";
     }
     
-<<<<<<< HEAD
-    @GetMapping("/Mantenimiento/delete/{id}")
-=======
-    
     @GetMapping("delete/{id}")
->>>>>>> origin/Development
     public String deleteConcierto(@PathVariable("id") long idMantenimiento){
         _mantenimientoServices.deleteMantenimientos(idMantenimiento);
         return "redirect:/Mantenimiento/Index";
