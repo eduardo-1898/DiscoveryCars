@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class HomeController {
     
     
-    @GetMapping("/Home/Index")
+    @GetMapping("/Home")
     public String Landing(){
         //Cambiar el path a la la vista que se necesite
         return "LandingPage";

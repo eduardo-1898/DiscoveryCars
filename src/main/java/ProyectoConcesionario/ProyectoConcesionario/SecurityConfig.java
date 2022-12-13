@@ -62,6 +62,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/**/*.js",
                 "/**/*.css",
                 "/**/*.jpg",
+<<<<<<< HEAD
                 "/**/*.JPG").permitAll()
                 .antMatchers("/Home/Index",
                         "/Login/index",
@@ -117,12 +118,32 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/Api/GetShoppingCart",
                         "/Api/SearchVehicle",         
                         "/Ventas/Crear")
+=======
+                "/**/*.JPG",
+                "/Home",
+                "/Login/index",
+                "/Login/SingUp").permitAll()
+                .antMatchers(
+                         "/Mantenimiento/**/")
+                .hasAnyRole("Mantenimientos")
+                .antMatchers(
+                        "/Clientes/**",
+                        "/Vehiculos/**",
+                        "/Ventas/**")
+                .hasAnyRole("Ventas")
+                .antMatchers(
+                        "/Clientes/**",
+                        "/Empleados/**",
+                        "/Mantenimiento/**/",
+                        "/Vehiculos/**",
+                        "/Ventas/**")
+>>>>>>> origin/Development
                 .hasAnyRole("Administrador")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login").permitAll()
-                .defaultSuccessUrl("/Home/Index", true);
+                .defaultSuccessUrl("/Home", true);
 
     }
 

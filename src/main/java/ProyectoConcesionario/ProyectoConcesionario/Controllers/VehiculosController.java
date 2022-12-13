@@ -21,12 +21,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  *
  * @author Eduardo JA
  */
 @Controller
+@RequestMapping("/Vehiculos/")
 public class VehiculosController {
     
     @Autowired
@@ -39,7 +41,7 @@ public class VehiculosController {
     private IModeloServices _modeloServices;
     
     
-    @GetMapping("/Vehiculos/Nuevo")
+    @GetMapping("Nuevo")
     public String CrearVehiculo(Model model){
         
         List<Modelo> listModelos = _modeloServices.getModelos();
@@ -63,7 +65,7 @@ public class VehiculosController {
         return "Vehiculos/AdmVehicular";
     }
     
-    @GetMapping("/Vehiculos/Actualizar/{id}")
+    @GetMapping("Actualizar/{id}")
     public String ActualizarClientes(@PathVariable("id") String placa, Model model){
 
         List<Modelo> listModelos = _modeloServices.getModelos();
@@ -85,14 +87,14 @@ public class VehiculosController {
         return "Vehiculos/UpdateVehicle";
     }
     
-    @GetMapping("/Vehiculos/Index")
+    @GetMapping("Index")
     public String IndexVehiculo(Model model){
         List<Vehiculos> getVehicles = _vehiculoServices.getVehiculos();
         model.addAttribute("vehiculo", getVehicles);
         return "Vehiculos/HistorialAdmVehicular";
     }
     
-    @PostMapping("/Vehiculos/save")
+    @PostMapping("save")
     public String SaveVehiculos(@ModelAttribute Vehiculos vehiculos){
         _vehiculoServices.saveVehiculos(vehiculos);
         return "redirect:/Vehiculos/Index";

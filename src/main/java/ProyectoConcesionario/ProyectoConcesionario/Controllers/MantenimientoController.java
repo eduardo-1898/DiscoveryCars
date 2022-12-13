@@ -19,8 +19,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/Mantenimiento/")
 public class MantenimientoController {
     
     @Autowired
@@ -32,20 +34,20 @@ public class MantenimientoController {
     @Autowired
     private IEmpleadoServices _empleadoServices;
     
-    @GetMapping("/Mantenimiento/Index")
+    @GetMapping("Index")
     public String IndexMantenimientos(Model model){
         List<Mantenimiento> listMantenimientos = _mantenimientoServices.getMantenimientos();
         model.addAttribute("mantenimientos", listMantenimientos);
         return "Mantenimiento/HistorialMantenimiento";
     }
     
-    @PostMapping("/Mantenimiento/save")
+    @PostMapping("save")
     public String saveMantenimiento(@ModelAttribute Mantenimiento mantenimiento){
         _mantenimientoServices.saveMantenimientos(mantenimiento);
         return "redirect:/Mantenimiento/Index";
     }
     
-    @GetMapping("/Mantenimiento/Nuevo")
+    @GetMapping("Nuevo")
     public String CrearMantenimiento(Model model){
         
         List<Departamento> listDepartments = _departamentoServices.getDepartamentos();
@@ -64,7 +66,7 @@ public class MantenimientoController {
         return "Mantenimiento/RegistroMantenimiento";
     }
     
-    @GetMapping("/Mantenimiento/Actualizar/{id}")
+    @GetMapping("Actualizar/{id}")
     public String ActualizarMantenimiento(@PathVariable("id") Long idMantenimiento, Model model){
         
         List<Departamento> listDepartments = _departamentoServices.getDepartamentos();
@@ -84,7 +86,12 @@ public class MantenimientoController {
         return "Mantenimiento/UpdateMaintenance";
     }
     
+<<<<<<< HEAD
     @GetMapping("/Mantenimiento/delete/{id}")
+=======
+    
+    @GetMapping("delete/{id}")
+>>>>>>> origin/Development
     public String deleteConcierto(@PathVariable("id") long idMantenimiento){
         _mantenimientoServices.deleteMantenimientos(idMantenimiento);
         return "redirect:/Mantenimiento/Index";
