@@ -4,7 +4,6 @@
  */
 package ProyectoConcesionario.ProyectoConcesionario.Controllers;
 
-import ProyectoConcesionario.ProyectoConcesionario.entity.Cliente;
 import ProyectoConcesionario.ProyectoConcesionario.entity.Marca;
 import ProyectoConcesionario.ProyectoConcesionario.entity.Modelo;
 import ProyectoConcesionario.ProyectoConcesionario.entity.Vehiculos;

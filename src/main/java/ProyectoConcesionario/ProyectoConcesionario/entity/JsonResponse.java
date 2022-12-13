@@ -4,6 +4,7 @@
  */
 package ProyectoConcesionario.ProyectoConcesionario.entity;
 
+import java.util.Date;
 import lombok.Data;
 
 /**
@@ -14,4 +15,9 @@ import lombok.Data;
 public class JsonResponse {
     public String placa;
     public String Cedula;
+    public Long Cliente;
+    
+    public String Estado;
+    public Date fecha_ingreso;
+    
 }

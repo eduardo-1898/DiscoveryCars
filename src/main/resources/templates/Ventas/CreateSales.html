@@ -23,10 +23,14 @@
                                 </div>
                             </div>
                             <div class="row form-section">
+                                
+                                <input id="txtIdCliente" type="text" style="visibility: hidden; display: none;">
+                                
                                 <div class="col-12 col-md-6 col-sm-12 mb-2">
                                     <label th:text="#{empleado.cliente.cedula}"></label>
                                     <input id="txtDNI" type="text" class="form-control" readonly>
                                 </div>
+                                
                                 <div class="col-12 col-md-6 col-sm-12 mb-2">
                                     <label th:text="#{ventas.cliente}"></label>
                                     <input id="txtName" type="text" class="form-control" readonly>
@@ -85,7 +89,7 @@
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <button type="submit" class="btn btn-success">
+                                    <button onclick="addShoppingCart()" type="button" class="btn btn-success">
                                         Agregar al carrito <i class="fas fa-shopping-basket"></i>
                                     </button>
                                 </div>
@@ -94,33 +98,12 @@
                         <div class="col-12 col-lg-6 col-sm-12">
                             <div id="shopping-card" class="card-body mt-4">
                                 <h3 class="card-tittle text-center" th:text="#{ventas.lista}"></h3>
-                                <div id="conteiner-sales">
-                                    <div class="row">
-                                        <div class="col-12 mt-2">
-                                            <label style="font-size: 10px; font-weight: bold;">Vehiculo Hyudai Tucson 2021</label>
-                                        </div>
-                                        <div class="col-12">
-                                            <label style="font-size: 9px; color:green">Precio: $24,000</label>
-                                        </div>
-                                        <div class="col-12">
-                                            <hr>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12 mt-2">
-                                            <label style="font-size: 10px; font-weight: bold;">Vehiculo Hyudai Tucson 2022</label>
-                                        </div>
-                                        <div class="col-12">
-                                            <label style="font-size: 9px; color:green">Precio: $24,000</label>
-                                        </div>
-                                        <div class="col-12">
-                                            <hr>
-                                        </div>
-                                    </div>
+                                <div id="conteiner-sales">                                   
+                                    
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <button class="btn btn-success">
+                                        <button type="button" onclick="addSale()" class="btn btn-success">
                                             Finalizar venta <i class="fas fa-shopping-basket"></i>
                                         </button>
                                     </div>

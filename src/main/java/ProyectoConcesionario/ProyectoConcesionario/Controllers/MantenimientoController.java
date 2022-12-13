@@ -84,7 +84,6 @@ public class MantenimientoController {
         return "Mantenimiento/UpdateMaintenance";
     }
     
-    
     @GetMapping("/Mantenimiento/delete/{id}")
     public String deleteConcierto(@PathVariable("id") long idMantenimiento){
         _mantenimientoServices.deleteMantenimientos(idMantenimiento);

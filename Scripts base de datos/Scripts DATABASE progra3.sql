@@ -43,6 +43,7 @@ CREATE TABLE Empleado(
     Password varchar(150) not null,
     Estado boolean,
     id_Role int not null,
+    active boolean,
     CONSTRAINT FK_Empleado_Rol
     FOREIGN KEY(id_Role)
     REFERENCES Roles(id)
@@ -83,7 +84,7 @@ CREATE TABLE Mantenimiento(
 );
 
 CREATE TABLE Encabezado(
-	Id int not null primary key,
+	Id int not null primary key auto_increment,
     Id_Empleado int not null,
     Id_Cliente int not null,
     Fecha_Venta date,
@@ -97,13 +98,10 @@ CREATE TABLE Encabezado(
 
 
 CREATE TABLE Venta(
-	IdVenta int not null primary key,
-    Id_Factura int not null,
+	Id int not null primary key auto_increment,
+    Factura int not null,
     Placa varchar(9) not null,
-    Precio_Venta int not null,
-    CONSTRAINT FK_Venta_Encabezado
-    FOREIGN KEY(Id_Factura)
-    REFERENCES Encabezado(Id)
+    Precio_Venta int not null
 );
 
 
@@ -123,6 +121,20 @@ CREATE TABLE StockVehiculos(
     REFERENCES Modelo(id)
 );
 
+CREATE TABLE Ventas_Intermedias(
+	id int not null primary key auto_increment,
+    id_Cliente int,
+    placa_Venta varchar(10),
+    fecha_Ingreso date,
+    estado varchar(50),
+    constraint fk_cliente_ventaIntermedia
+    foreign key(id_Cliente)
+    references cliente(id),
+    constraint fk_vehiculo_ventaIntermedia
+    foreign key(placa_Venta)
+    references vehiculos(placa)
+);
+
 DELIMITER $$
 CREATE TRIGGER tr_ActualizaVenta
 AFTER INSERT ON Venta FOR EACH ROW
@@ -130,7 +142,7 @@ BEGIN
 	UPDATE StockVehiculos 
 	SET Ultima_modificacion = now(), 
 		Estado_Vehiculo = 'VENDIDO', 
-		cliente_Asociado = (select Id_Cliente FROM Encabezado WHERE Id_Factura = New.Id_Factura),
+		cliente_Asociado = (select Id_Cliente FROM Encabezado WHERE id = New.Factura),
 		Fecha_Venta = now() 
 		WHERE Placa = New.Placa;
 END;
@@ -208,4 +220,12 @@ INSERT INTO Modelo(Modelo)VALUES('I40');
 INSERT INTO Modelo(Modelo)VALUES('IONIQ');
 INSERT INTO Modelo(Modelo)VALUES('Santa Fe');
 INSERT INTO Modelo(Modelo)VALUES('Veloster');
+
+
+INSERT INTO Empleado(Cedula,Nombre_Empleado,Apellido1,Nombre_Usuario,Password,Estado,id_Role,active)
+VALUES('2-0709-0773','Sofia','Contreras','scontreras','$2a$12$dvjn5O3oRXYskKjK4wQ7yOXYpf0QZfQ5c66Cd0fACWbhu8nzsQKr.',true,1,1);
+INSERT INTO Empleado(Cedula,Nombre_Empleado,Apellido1,Nombre_Usuario,Password,Estado,id_Role,active)
+VALUES('1-1234-2456','Axel','Camacho','acamacho','$2a$12$dvjn5O3oRXYskKjK4wQ7yOXYpf0QZfQ5c66Cd0fACWbhu8nzsQKr.',true,2,1);
+INSERT INTO Empleado(Cedula,Nombre_Empleado,Apellido1,Nombre_Usuario,Password,Estado,id_Role,active)
+VALUES('3-4343-6656','Eduardo','Jaen','ejaen','$2a$12$dvjn5O3oRXYskKjK4wQ7yOXYpf0QZfQ5c66Cd0fACWbhu8nzsQKr.',true,3,1);
 

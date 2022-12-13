@@ -120,5 +120,4 @@ public class Empleado implements Serializable {
     public void setRoles(Roles Roles) {
         this.Roles = Roles;
     }
-
 }

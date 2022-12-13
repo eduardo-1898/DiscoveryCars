@@ -4,9 +4,12 @@ import ProyectoConcesionario.ProyectoConcesionario.entity.Empleado;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import javax.servlet.http.HttpSession;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 public class UserPrincipal implements UserDetails {
 
@@ -25,6 +28,12 @@ public class UserPrincipal implements UserDetails {
         GrantedAuthority authorityroles = new SimpleGrantedAuthority("ROLE_"+this.empleado.getRoles()
                 .getNombre_Role());
         authorities.add(authorityroles);
+        
+        ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+        HttpSession session = attr.getRequest().getSession(true);
+        
+        session.setAttribute("usersession", empleado);
+        
         return authorities;
     }
     
