@@ -56,55 +56,30 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/**/*.js",
                 "/**/*.css",
                 "/**/*.jpg",
-                "/**/*.JPG").permitAll()
-                .antMatchers("/Home/Index",
-                        "/Login/index",
-                        "/Login/SingUp",
-                        "/Mantenimiento/Index",
-                        "/Mantenimiento/save",
-                        "/Mantenimiento/Nuevo",
-                        "/Mantenimiento/Actualizar/{id}",
-                        "/Mantenimiento/delete/{id}")
+                "/**/*.JPG",
+                "/Home",
+                "/Login/index",
+                "/Login/SingUp").permitAll()
+                .antMatchers(
+                         "/Mantenimiento/**/")
                 .hasAnyRole("Mantenimientos")
-                .antMatchers("/Home/Index",
-                        "/Login/index",
-                        "/Login/SingUp",
-                        "/Clientes/Nuevo",
-                        "/Clientes/save",
-                        "/Clientes/Actualizar/{id}",
-                        "/Clientes/Index",
-                        "/Vehiculos/Nuevo",
-                        "/Vehiculos/Actualizar/{id}",
-                        "/Vehiculos/save",
-                        "/Vehiculos/Index")
+                .antMatchers(
+                        "/Clientes/**",
+                        "/Vehiculos/**",
+                        "/Ventas/**")
                 .hasAnyRole("Ventas")
-                .antMatchers("/Home/Index",
-                        "/Login/index",
-                        "/Login/SingUp",
-                        "/Clientes/Nuevo",
-                        "/Clientes/save",
-                        "/Clientes/Actualizar/{id}",
-                        "/Clientes/Index",
-                        "/Empleados/Nuevo",
-                        "/Empleados/Actualizar/{id}",
-                        "/Empleados/Index",
-                        "/Empleados/save",
-                        "/Mantenimiento/Index",
-                        "/Mantenimiento/save",
-                        "/Mantenimiento/Nuevo",
-                        "/Mantenimiento/Actualizar/{id}",
-                        "/Mantenimiento/delete/{id}",
-                        "/Vehiculos/Nuevo",
-                        "/Vehiculos/Actualizar/{id}",
-                        "/Vehiculos/save",
-                        "/Vehiculos/Index",
-                        "/Ventas/Crear")
+                .antMatchers(
+                        "/Clientes/**",
+                        "/Empleados/**",
+                        "/Mantenimiento/**/",
+                        "/Vehiculos/**",
+                        "/Ventas/**")
                 .hasAnyRole("Administrador")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login").permitAll()
-                .defaultSuccessUrl("/Home/Index", true);
+                .defaultSuccessUrl("/Home", true);
 
     }
 
