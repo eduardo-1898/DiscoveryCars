@@ -67,19 +67,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 "/Login/index",
                 "/Login/SingUp").permitAll()
                 .antMatchers(
-                         "/Mantenimiento/**/")
-                .hasAnyRole("Mantenimientos")
+                         "/Mantenimiento/**")
+                .hasAnyRole("Mantenimientos", "Administrador")
                 .antMatchers(
                         "/Clientes/**",
                         "/Vehiculos/**",
                         "/Ventas/**")
-                .hasAnyRole("Ventas")
+                .hasAnyRole("Ventas", "Administrador")
                 .antMatchers(
-                        "/Clientes/**",
-                        "/Empleados/**",
-                        "/Mantenimiento/**/",
-                        "/Vehiculos/**",
-                        "/Ventas/**")
+                        "/Empleados/**")
                 .hasAnyRole("Administrador")
                 .anyRequest().authenticated()
                 .and()
@@ -88,5 +84,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/Home", true);
 
     }
+    
 
 }
